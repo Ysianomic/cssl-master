@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMG10.html</title>
+</head>
+<body>
+    <!--
+        img태그 : 이미지를 표시할때 사용하는 태그
+        속성:
+            src : 해당 이미지의 경로(절대경로 혹은 상대경로)        웹표준필수
+            alt : 대체 텍스트(이미지가 표시안될때 텍스트 표시됨)    웹표준필수
+            width : 이미지의 가로폭 지정        미지정시 이미지원본크기
+            height : 이미지의 세로폭 지정
+            
+            
+        usemap속성 : 이미지를 map으로 사용할때 값지정 값지정시 반드시 앞에 #을 붙인다.
+        - inline element
+        - 종료태그가없다
+
+        ※a태그를 이용해서 이미지에 링크걸때는 반드시 border값을 0으로 해야함
+        안그려면 테두리가 자동적으로 생김(IE의 경우)
+
+    -->
+
+    <h2>img태그</h2>
+    <h3>이미지 원본 크기 대로 표시</h3>
+    <img src="../Images/jara.jpg" alt="이미지가 없어요."/>
+    <h3>이미지 원본 크기 조정</h3>
+    <!-- CSS속성이 아닌 태그의 속성에 값을 줄때는 단위는 생략가능 -->
+    <img src="../Images/jara.jpg" alt="이미지가 없어요." width="200" height="200"/>
+    <!-- 아래처럼 CSS속성으로 값 줄때는 단위 생략시 제대로 안나옴 -->
+    <img src="../Images/jara.jpg" alt="이미지가 없어요." style="width: 210px; height: 200px;"/>
+    <h3>이미지에 링크걸기</h3>
+    <a href="https://www.nate.com">
+    <img src="../Images/jara.jpg" alt="이미지가 없어요." style="width: 100px; height: 100px;"/>
+    </a>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator02.html</title>
+    <script>
+        /*
+        우선순위가 같때는 왼쪽에서 오른쪽으로 계산
+        산술연산자 > 비교연산자 > 논리연산자
+        1. 산술연산자 +,-,*,/,%
+        */
+        document.write('<h2>산술 연산자</h2>');
+        document.write('3 % 5 *2 + 10/5는 ' + (3 % 5 *2 + 10/5));
+        document.write('<br/> 5/3는 ' + 5/3);   //자바는 1, 자스는 소수점까지
+
+        /*
+        2. 비교연산자 >,>=,<,<=,==,!=
+        우선순위가 모두동일
+        자스에서는 조건식에서 0이나 null이나 false면 false로 처리되고
+        그 이외 모든값은 true로 판단한다
+        */
+        document.write('<h2>비교 연산자</h2>');
+        //내부적으로 한자씩 유니코드값으로 비교
+        document.write('가나다' >= '가다나');   //자바 x, 자스 o
+        document.write('<br/>');
+        //3>9는 결과가 false, 0은 false로 간주됨 고로 false == false비교와 같다.
+        document.write(3>9 == 0);
+        if(null == false){  //null은객체 false는 boolean(일반 값)
+            document.write('<br/>null == false는 참이다.<br/>');
+        }
+        else{
+            document.write('<br/>null == false는 거짓이다.<br/>');
+            //==(동등연산자) 와 ===(일치연산자)
+            //==는 자료형이 다르더라도 내부적 강제 형변환해서 비교
+            //===는 강제 형변호나 과정없이 정확히 값하고 자료형이 일치해야함
+        }
+        if(null) console.log('참이다');
+        else console.log('거짓이다');
+        document.write((0 == '0')+'<br/>')  //true
+        document.write((0 === '0')+'<br/>') //false
+        document.write((false == '0')+'<br/>')  //true
+        document.write((false === '0')+'<br/>') //false
+
+        //3.논리연산자 : ^^,||,!
+        //우선순위 ! > && > ||
+        document.write('<h2>논리 연산자</h2>');
+        document.write(3>2 || 5<=10 && !(3-4));
+        //4. 증감 연산자 : ++,--
+        document.write('<h2>증감 연산자</h2>');
+        num  = 10;  //암묵적선언 권장하진않음
+        document.write('num의 자료형 : ' + typeof(num) + ', num에 저장된 값 : '+num);
+        num++;
+        document.write('<br/>' + ++num);    //12
+        document.write('<br/>' + num++);    //12
+        document.write('<br/>' + num);    //13
+        //5. 단축 표현식 : +=,-=,*=,/=,%=
+        document.write('<h2>단축 표현식</h2>');
+        document.write((num %= 5));
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

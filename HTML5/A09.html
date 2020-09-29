@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A09.html</title>
+</head>
+<body>
+    <!--
+        a태그 : HyperLink기능을 제공하는 태그
+        속성 : 
+                href : 이동할 페이지경로 혹은 url주소
+                target : 이동할 페이지를 보여줄 대상 지정
+                    _self(기본값) : 자기자신의 브라우저에 이동할 페이지 표시
+                    _top : 현재보여지는 페이지의 탑 프레임(최고하면)에 표시
+                    _parent : 부모화면에 표시
+                    사실 위 3개는 거의 비슷함
+                    _blank(새창(탭)으로 페이지가 열림)
+                inline element
+        중요 : a태그를 이용해 이동할 페이지로 값을 전달할 수 있다. 쿼리스트링(?이하)을 이용해서 값을 전달
+        
+        쿼리스트링이란?
+        -페이지명 다음에 ?로 연결한 문자열
+        ?이름 = 값의 쌍으로 전달
+        여러개 전달시에는 &로 연결
+        
+        a태그로 값을 전달하면 get방식
+
+        -링크 거는 방법
+            ※작성 페이지기준!!!!!!!!!!!!!!!!
+
+            절대주소(추천) : 링크거는 페이지의 위치가 바뀌더라도 주소가 절대로 변하지 않음
+            https://~로 링크를 걸거나 /(홈 디렉토리의 루트를 의미)로 시작하거나
+            상대주소 : 링크거는 페이지의 위치에 따라 주소가 상대적으로 바뀜
+                . : 현재 디렉토리
+                .. : 상위 디렉토리
+    -->
+
+    <div>
+        <h2>A태그</h2>
+            <h3>_self(현재 창에 이동할 페이지의 내용을 표시:디폴트)</h3>
+            <a href="./ULOL08.html">target속성 미 지정(상대경로)-ULOL08.html</a> <br/>
+            <a href="http://127.0.0.1:5500/HTML5/ULOL08.html">target속성 미 지정(절대경로 - http로시작)-ULOL08.html</a><br/>
+            <a href="/HTML5/ULOL08.html">target속성 미 지정(절대경로 - /로시작)-ULOL08.html</a>
+            
+            <h3>_blank(현재창이아닌 새로운 창(탭)에 이동할 페이지의 내용을 표시)</h3>
+            <a href="../JAVASCRIPT_ES5/Variable01.html" target="_blank">target속성 지정(상대경로) - Variable01.html</a>
+
+            <h3>쿼리 스트링으로 데이터 전달</h3>
+            <a href="ULOL08.html?user=kim&name=홍길동&age=20">get방식으로 데이터 전송</a>
+
+    </div>
+
+</body>
+</html>

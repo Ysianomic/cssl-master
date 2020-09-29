@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array03_1.html</title>
+    <script>
+        /*
+        배열 : 자바와는 다르게 여러타입(자료형)의 값을 저장할 수 있는 자료구조(메모리)
+        그리고 배열의 크기가 불변이 아니다.
+        선언방법:
+        var 배열명 = new Array(배열 크기);
+        */
+        //배열 선언방법1.
+        var array = new Array(5);
+        document.write('배열크기 : '+ array.length);
+        document.write('<br/>array의 자료형 : ' + typeof array + ',array:' +array);
+        console.log(array);
+        document.write('<h2>배열 초기화 전</h2>');
+        document.write('<ul>');
+        for(var i=0;i<array.length;i++){
+            document.write('<li>array['+i+']='+array[i]+'</li>')
+        }
+        document.write('</ul>');
+        //array[0] : 배열요소명, 0은 배열의 인덱스
+        //초기화
+        array[0] = 100;
+        array[1] = new Date();
+        array[2] = 3.15;
+        array[3] = true;
+        array[4] = "자바 스크립트";
+        //배열의 크기 가변적
+        array[5] = 100; //5번방은 없지만 방이 새롭게 추가된다.
+        array.push(200);
+        array.push(300);
+        array.push(400);
+        array.push(500);
+        document.write('메모리 추가 후 배열크기 : '+ array.length);
+        document.write('<h2>배열 초기화 후</h2>');
+        document.write('<ul>');
+        for(var i=0;i<array.length;i++){
+            document.write('<li>자료형 : '+typeof(array[i])+', array['+i+']='+array[i]+'</li>')
+        }
+        document.write('</ul>');
+        
+        //배열 선언방법2.
+        //선언과 동시에 초기화(new사용)
+        var initArray = new Array('홍길동',20,'가산동',new Date());
+        document.write('<h2>배열 선언과 동시에 초기화(new연산자 사용)</h2>');
+        document.write('<ul>');
+        for(var i=0;i<array.length;i++){
+            document.write('<li>자료형 : '+typeof(initArray[i])+', initArray['+i+']='+initArray[i]+'</li>')
+        }
+        document.write('</ul>');
+        
+        //배열 선언 방법3.
+        //선언과 동시에 초기화(new 미 사용,[]사용(배열 리터럴))
+        var initNoNew = ['한소인',10,'자바전문과정',{owner:'가길동',est:1970}];
+        document.write('<h2>배열 선언과 동시에 초기화(new미사용)</h2>');
+        document.write('자료형 : ' + typeof initNoNew);
+        document.write('<h2>배열 선언과 동시에 초기화(new 연산자 미사용,대괄호 사용)</h2>');
+        document.write('<ul>');
+        for(var i=0;i<initNoNew.length;i++){
+            console.log(typeof initNoNew[i] == 'object');
+            if(typeof initNoNew[i] != 'object')
+                document.write('<li>자료형 : '+typeof(initNoNew[i])+', initNoNew['+i+']='+initNoNew[i]+'</li>');
+            else //object인경우
+                document.write('<li>initNoNew[' + i + '] = 대표자' + initNoNew[i].owner+', 설립일 : ' + initNoNew[i].est + '</li>');
+        }
+        document.write('</ul>');
+
+        //배열 선언 방법4. 배열크기 미지정
+        /*
+            프로그래밍시 주로사용
+            -배열 크기가 0인 배열이 생성됨 즉, 값을 저장할 수 있는 메모리는 생성 안됨.
+            -최종적으로는 넣은 마지막 인덱스 값에따라 크기가 결정됨.
+        */
+        document.write('<h2>배열선언(new사용, 크기 미 지정</h2>');
+        var nosize = new Array();   //var nosize = []와 같다.
+        document.write('배열크기 : ' + nosize.length);
+        nosize[4] = true;
+        nosize[2] = 100;
+        nosize[9] = '가길동';
+        document.write('<br/>배열크기 : ' + nosize.length);
+        document.write('<ul>');
+        for(var i=0;i<nosize.length;i++){
+            document.write('<li>자료형 : '+typeof(nosize[i])+', nosize['+i+']='+nosize[i]+'</li>')
+        }
+        document.write('</ul>');
+
+
+
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>학생의 평균 구하기</legend>
+        학생수 입력 : <input type = "text" id = "students"/>
+        <button onclick="getAverage()"> 평균 구하기</button>
+
+
+    </fieldset>
+
+    <script>
+            //배열선언
+            var score = []; //new Array와 같다.
+            function getAverage(){
+                //입력한 학생수 구하기
+                var textBox = document.getElementById('students');
+                console.log('입력값 : %s, textBox.value의 자료형: %s',textBox.value,typeof textBox.value);
+                //학생 수 만큼 점수를 입력받고 총합 및 평균구하기
+                var total=0;
+                for(var i=0;i<parseInt(textBox.value);i++){
+                    score [i] = parseInt(prompt(i+1+'번째 점수 입력'));
+                    total += score[i];
+                }
+                var avg = total/score.length;
+                console.log('총점 : %d, 평균 : %s',total,avg);
+            }
+
+
+
+
+    </script>
+</body>
+</html>

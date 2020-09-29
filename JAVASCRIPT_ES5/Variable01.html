@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable01.html</title>
+    <script>
+        /*
+            -자스(ES5)에서는 대소문자를 구분한다.
+            -하나의 명령행이 끝나면 ;로 명령의 끝을 알린다.
+            -자스에서는 변수에 넣은 값에 따라 그 변수의 자료형이 결정된다.
+            -변수 선언:var라는 키워드 사용
+        */
+       
+        //1. 변수선언
+        var num;
+        document.write('<h2>초기화 전</h2>');
+        //바디영역에 저렇게 출력됨
+        document.write('num의 자료형 : ' + typeof(num)+', num에 저장된 값 : '+num);
+        //undefined는 하나의 자료형이자 값이다.(변수 선언 후 초기화 전)
+       
+        //2. 변수 초기화
+        num = 100;
+        document.write('<h2>초기화 후</h2>');
+        document.write('num의 자료형 : ' + typeof(num)+', num에 저장된 값 : '+num);
+        num = 3.14;
+        document.write('<br/>num의 자료형 : ' + typeof(num)+', num에 저장된 값 : '+num);
+        num = true;
+        document.write('<br/>num의 자료형 : ' + typeof(num)+', num에 저장된 값 : '+num);
+        num = "뚱인데요.";  //자스에서는 문자열을 나타내기위해 ''나 ""를 사용한다.
+        document.write('<br/>num의 자료형 : ' + typeof(num)+', num에 저장된 값 : '+num);
+        
+        //3. 변수선언과 동시에 초기화
+        document.write('<h2>선언과 동시에 초기화</h2>');
+        var str = "자바스크립트";
+        document.write('<h2>콤마(,)로 구분해서 동시에 변수 여러개</h2>');
+        
+        //4. 여러개의 변수를 콤마(,)로 구분해서 동시 선언 및 초기화
+        var num1=10,num2,str1 = '자스',str2;
+        //undefined+숫자 = NaN(Not a Number)도 하나의 값이고 number타입이다.
+        document.write(num1+num2+"<br/>");
+        document.write(typeof(num1+num2)+"<br/>");
+        //NaN을 판단하는 함수 : isNaN()
+        if(isNaN(num1+num2)){
+            document.write('num1+num2는 NaN이다<br/>')
+        }
+        else{
+            document.write('num1+num2는 NaN이 아니다<br/>')
+        }
+        //문자열 + undefineded = 문자열(즉 값은 문자열undefinded)
+        document.write(str1+str2+'<br/>');
+        document.write(typeof(str1+str2+'<br/>'));
+        //5. 자스의 기타 자료형
+        document.write('<h2>자스의 기타 자료형</h2>');
+        var date = new Date();
+        document.write(typeof(date)+'&nbsp'+date);
+        /*
+            null의미 : 값이 없다라는 의미. 0이나 "",''(빈문자열)는 null이 아님
+            null은 하나의 ㄱ밧이고 자료형으로는 object타입에 해당.
+        */
+        var nullvar = null;
+        document.write('<br/>'+typeof(nullvar)+'&nbsp'+nullvar);
+        var obj = {};
+        document.write('<br/>'+typeof(obj)+'&nbsp'+obj);
+        console.log(typeof(obj)+'&nbsp'+obj+'<br/>');
+        obj.name = '가길동';
+        obj.age = 20;
+        //변수에다가 함수를 저장가능함 자바스크립트는
+        obj.walk = function(){
+            document.write(this.name+'가(이) 걷다<br/>');
+        };
+        document.write('이름 : '+ obj.name+', 나이 : '+obj.age+'<br/>');
+        obj.walk();
+        //json : javascript object notation : 자바스크립트객체 표기
+        var obj2 = {id : 'KIM',pwd:'1234','name' : '김길동', 
+        eat:function(food){
+            document.write(this.name+'이(가)' + food + '를 먹는다.')
+        }}; //json(자바스크립트 객체)
+        obj2.toString = function(){
+            return '[아이디 : '+this.id+', 비번 : '+this.pwd + ', 이름 : ' + this.name + ',]';
+        };
+        document.write('obj2의 자료형' + typeof(obj2) + ', obj2에 저장된 값 : ' + obj2+'<br/>');
+        console.log(obj2);
+        obj2.eat('맛나는 피자');
+        
+        const PI = 3.14;
+        //PI = 100;
+        document.write('<BR/>PI의 자료형' + typeof(PI) + ', PI에 저장된 값 : ' + PI+'<br/>');
+        
+        var f = function(a,b){
+            return a+b;
+        };
+        document.write('<br/>f의 자료형 : ' + typeof(f)+',f에 저장된 값 : '+ f+'<br/>');
+        alert(f(10,5));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

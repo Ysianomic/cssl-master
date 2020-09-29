@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table12.html</title>
+    <style>
+        table.standard,table.standard td{
+            border:1px black solid;   
+        }
+        table.standard{
+            /* cellspacing="20"과 같다. */
+            border-spacing: 20px;
+            background-color: green;
+            width: 300px;
+            height: 300px;
+
+        }
+        table.standard td{
+            /* cellpadding="20"과같음 */
+            padding: 20px;
+        }
+        /* align = "center"와 같다. */
+        .innerdiv{
+            margin:0 auto ;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        table태그 : 표형태로 컨텐츠를 표시하기위한 태그
+        하위태그로 아래와 같은 태그를 가질 수 있다.
+
+        tr(table row)태그 : 행을 표시한다.
+        td(table data cell)태그 :
+                                하나의 cell(칸)을 표시한다. 고로 반드시 tr태그의 하위태그로 존재해야한다.
+                                데이터는 td태그사이에 넣어야한다.
+
+        th(table header)태그 : 역시 cell을 표시하는 태그이나 표의 헤더를 표시할때 사용 글자가 볼드체이고 가운데 정렬
+
+        -아래는 웹표준이나 웹 접근성(장애인,비장애인)을 고려한 태그(스크린 리더)
+        caption태그 : 테이블의 제목 표시
+        summary : 테이블의 요약 설명
+        tbody태그 : 표에서 내용영역에 해당하는 부분을 의미적으로 구분하기 위한태그
+        thead태그 : 표에서 헤더영역에 해당하는...
+        tfoot태그 : 표에서 푸터영역에 해당하는....
+
+        [table태그의 속성]
+        height
+        width
+        border : 테이블의 테두리 두께
+        cellpadding : cell과 컨텐츠사이의 여백(기본값 1)
+        cellspacing : cell과 cell사이의 여백(기본값 2)
+        align : left(default),center,right 표자체의 정렬
+        bgcolor
+
+        [tr태그의 속성]
+        bgcolor
+        align : 셀안에있는 데이터의 정렬
+        height
+
+        [td태그의 속성]
+        align
+        height
+        width
+        bgcolor
+        colspan : 열을 병합할때
+        rowspan : 행을 병합할때
+
+     -->
+     <div>
+        <h2>table태그</h2>
+        <h3>table태그의 속성들</h3>
+        <h4>table태그의 속성으로 테이블 디자인 - 웹표준 어긋남</h4>
+        <table border="1" cellpadding="20" cellspacing="10" width="200" height="300" bgcolor="green" align="center"> 
+            <tr>
+                <td>가</td>
+                <td>나</td>
+            </tr>
+            <tr>
+                <td>다</td>
+                <td>라</td>
+            </tr>
+        </table>
+        
+        <h4>CSS속성으로 테이블 디자인</h4>
+        <div class="outerdiv">
+            <div class="innerdiv">
+                <table class="standard"> 
+                    <tr>
+                        <td>가</td>
+                        <td>나</td>
+                    </tr>
+                    <tr>
+                        <td>다</td>
+                        <td>라</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <h3>tr태그의 속성들</h3>
+        <table border="1" bgcolor="red" width="200" height="200">
+            <!--<tr align="center" height="150"> 웹표준에 어긋남
+                -->
+                <tr style="text-align: center; height: 150px;">
+                <td>가</td>
+                <td>나</td>
+            </tr>
+            <!-- <tr bgcolor="yellow"> -->
+            <tr style="background-color: yellow;">
+                <td>다</td>
+                <td>라</td>
+            </tr>
+        </table>
+        <h3>td태그의 속성들</h3>
+        <table border="1" bgcolor="red" width="200">
+            <tr align="center" height="150">
+                <td bgcolor="green">가</td>
+                <td align="right">나</td>
+            </tr>
+            <tr >
+                <td width="150" height="100">다</td>
+                <td>라</td>
+            </tr>
+        </table>
+        <h3>셀 병합</h3>
+        <table border="1" width="400" height="400">
+            <tr>
+                <td colspan="2">1행1열</td>
+                <td>1행3열</td>
+            </tr>
+            <tr>
+                <td>2행1열</td>
+                <td rowspan="2">2행2열</td>
+                <td>2행3열</td>
+            </tr>
+            <tr>
+                <td>3행1열</td>
+                <td>3행3열</td>
+            </tr>
+            <tr>
+                <td>4행1열</td>
+                <td colspan="2">4행2열</td>
+            </tr>
+        </table>
+        <h3>테이블의 백그라운드 색과 테두리 여백을 이용한 테두리효과</h3>
+        <table style="width: 400px; height: 250px; background-color: red; border-spacing : 2px; text-align: center;" >
+            <tr style="background-color: white;">
+                <td>1행1열</td>
+                <td>1행2열</td>
+                <td>1행3열</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td>2행1열</td>
+                <td>2행2열</td>
+                <td>2행3열</td>
+            </tr>
+
+
+        </table>
+        <h3>웹 접근성을 고려한 테이블</h3>
+        <table summary="직원들의 연봉정보를 표시한 표입니다." style="background-color: sandybrown; border-spacing: 1px;width: 350px; text-align: center;">
+            <caption>직원 연봉표</caption>
+            <tfoot>
+            <tr style="background-color: whitesmoke;">
+                <td>총합</td>
+                <td colspan="2">15,000</td>
+                
+            </tr>
+            </tfoot>
+            <tbody>
+            <tr style="background-color: whitesmoke;">
+                <td>1</td>
+                <td>가길동</td>
+                <td>5,000</td>
+            </tr>
+            <tr style="background-color: whitesmoke;">
+                <td>2</td>
+                <td>나길동</td>
+                <td>3,000</td>
+            </tr>
+            <tr style="background-color: whitesmoke;">
+                <td>3</td>
+                <td>다길동</td>
+                <td>7,000</td>
+            </tr>
+            </tbody>
+            <thead>
+            <tr style="background-color: whitesmoke;">
+                <th>번호</th>
+                <th>이름</th>
+                <th>연봉</th>
+            </tr>
+            </thead>
+        </table>
+        <h3>테이블연습</h3>
+        <!-- 8행 3열 -->
+        <table style="background-color: red; width: 600px; height: 600px;" >
+            <tr style="background-color: yellow; height: 100px;">
+                <th colspan="3" style="text-align: left;">오늘의 수입지출</th>
+            </tr>
+            <tr style="background-color: turquoise;">
+                <th>내용</th>
+                <th>수입</th>
+                <th>지출</th>
+            </tr>
+            <tr style="background-color: white;">
+                <td>월급</td>
+                <td>1,000,000</td>
+                <td></td>
+            </tr>
+            <tr style="background-color: white;">
+                <td>점심값</td>
+                <td></td>
+                <td>5,000</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td>부모님 선물</td>
+                <td></td>
+                <td>30,000</td>
+            </tr>
+            <tr style="background-color: white;">
+                <th rowspan="3" style="background-color: green;">총계</th>
+                <td style="text-align: center;">수입</td>
+                <td style="text-align: center;">지출</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td >1,000,000</td>
+                <td>35,000</td>
+            </tr>
+            <tr style="background-color: white;">
+                <td>남은 돈</td>
+                <td>995,000</td>
+            </tr>
+        </table>
+
+     </div>
+     
+
+
+
+</body>
+</html>
