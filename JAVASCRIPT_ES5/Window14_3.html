@@ -21,9 +21,12 @@
         function fnCallAfter(flag){
             if(flag=='T'){
                 //익명함수사용
-                timeOne=setTimeout(function(){console.log('5초후 한번실행')},5000);
+                //timeOne=setTimeout(function(){console.log('5초후 한번실행')},5000);
                 //별도의 외부함수 사용
-                //timeOne=setTimeOut(fnOnce,5000);
+                //timeOne=setTimeout(fnOnce,5000);  //함수명만 혹은
+                timeOne=setTimeout("fnOnce()",5000);//()추가시에는 문자열로
+                //timeOne=setTimeout(fnOnce(),5000);//5초후가 아니라 바로 호출
+
             }
             else{
                 timeContinue = setInterval(function(){
