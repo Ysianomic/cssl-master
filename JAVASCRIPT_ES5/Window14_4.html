@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window14_4.html</title>
+    <script>
+        /*
+            escape() : 한글이나 일본어 및 중국어등 2바이트로 표현하는 언어들을 UTF-8형식으로 인코딩
+            숫자나 영문자는 아스키코드로 표현함으로 인코딩이 안됨.
+            더 정확히 말하면 16진수 4자리로 표현하는 유니코드로 인코딩 됨.
+            빈공백은 %20으로 인코딩 처리됨
+            Ajax나 JQuery에서 한글 처리시 주로 사용
+        */
+        var escapeString = '안녕 가! heLLO 1234567890';
+        console.log(escape(escapeString));
+        //unescape():UTF-8형식으로 인코딩된 값을 디코딩
+        console.log(unescape('%uC548%uB155%20%uAC00%21%20heLLO%201234567890'));
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

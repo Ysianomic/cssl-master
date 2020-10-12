@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window14_3.html</title>
+    <script>
+        /*
+            var 타이머객체 = setTimeout('함수명()혹은 무명함수',1000분의 1초단위)
+            :timer객체 반환
+            :특정시간이 지난 후 어떤 함수를 한번만 실행시키고자 할때 사용하는 메소드
+
+            타이머 객체로 실행 중지시 clearTimeout(타이머객체)호출
+
+            타이머 변수 = setInterval('함수명() 혹은 무명함수,1000분의 1초')
+            :매개변수에 주어진 시간이 되면 해당함수가 계속호출됨
+            해제시 - clearInterval(타이머변수)
+        */
+
+        var timeOne,timeContinue,counter=0;
+        function fnCallAfter(flag){
+            if(flag=='T'){
+                //익명함수사용
+                timeOne=setTimeout(function(){console.log('5초후 한번실행')},5000);
+                //별도의 외부함수 사용
+                //timeOne=setTimeOut(fnOnce,5000);
+            }
+            else{
+                timeContinue = setInterval(function(){
+                    console.log('3초마다실행 : ' + ++counter +'번째 호출');
+                    },3000)
+            }
+        }
+        function fnOnce(){
+            console.log('5초후 한번 실행');
+        }
+
+        function fnCallBreak(flag){
+            if(flag == 1){
+                window.clearTimeout(timeOne);
+            }
+            else{
+                window.clearTimeout(timeContinue);
+            }
+        }
+        //문제. 현재페이지가 웹브라우저에 로드시 clock이라는 아이디를 가진 span태그에 ?시?분?초를 표시하되 1초마다 갱신 되어야 한다.
+        window.addEventListener('load',function(){
+            var spanJS = document.getElementById('clock');
+            setInterval(function(){
+                var date = new Date();
+                spanJS.innerHTML=date.getHours()+'시'+date.getMinutes()+'분'+date.getSeconds()+'초';
+            },1000);
+            
+        });
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>타이머</legend>
+        <h4>일정 시간후 함수 실행</h4>
+        <input type="button" value="5초후 함수 실행" onclick='fnCallAfter("T");' />
+        <input type="button" value="함수 호출 중지" onclick="fnCallBreak(1);" />
+        <h4>일정시간마다 함수실행</h4>
+        <input type="button" value="3초마다 함수 실행" onclick="fnCallAfter('I');" />
+        <input type="button" value="함수 호출 중지" onclick="fnCallBreak(2);" />
+        <h4>시분초 표시</h4>
+        <span id="clock" style="color:Green;font-size:1.8em;font-weight:bold"></span>
+        </fieldset>
+</body>
+</html>

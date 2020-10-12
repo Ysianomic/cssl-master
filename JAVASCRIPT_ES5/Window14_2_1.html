@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window14_2_1.html</title>
+    <style>
+        table tr{
+            background-color: whitesmoke;
+        }
+        table tr:nth-child(2n+1):hover{
+            background-color: green;
+        }
+        table tr:nth-child(2n):hover{
+            background-color: red;
+        }
+    </style>
+    <script>
+        var setZipcode = function(zip1,zip2,addr){
+            //opener : open()메소드를 호출한 부모 페이지를 의미 즉, 팝업창을 띄운 윈도우 객체
+            opener.document.getElementById('zip1').value = zip1;
+            opener.document.getElementById('zip2').value = zip2;
+            opener.document.getElementById('addr').value = addr;
+            self.close();
+        }
+    </script>
+</head>
+
+<body>
+    <h2>주소록</h2>
+
+    <table style="background-color:gray;border-spacing:1px;width:100%">
+        <tr>
+            <th>우편번호</th>
+            <th>기본주소</th>
+        </tr>
+        <tr>
+            <td>111-222</td>
+            <td><a href="javascript:setZipcode('111','222','서울시 종로구')">서울시 종로구</a></td>
+        </tr>
+        <tr>
+            <td>000-333</td>
+            <td><a href="javascript:setZipcode('000','333','서울시 강남구')">서울시 강남구</a></td>
+        </tr>
+        <tr>
+            <td>333-444</td>
+            <td><a href="javascript:setZipcode('333','444','서울시 강동구')">서울시 강동구</a></td>
+        </tr>
+        <tr>
+            <td>555-777</td>
+            <td><a href="javascript:setZipcode('555','777','서울시 강서구')">서울시 강서구</a></td>
+        </tr>
+    </table>
+</body>
+
+</html>

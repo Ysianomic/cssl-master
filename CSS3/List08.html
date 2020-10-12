@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List08.html</title>
+    <style>
+        ul.sport{
+            border: 1px red solid;
+            list-style-position: inside;
+            list-style-type: upper-roman;
+        }
+        ul.sport li{
+            border: 1px green solid;
+            
+        }
+        ul.image{
+            list-style-image: url(../Images/roman.png);
+        }
+        ul.inline li{
+            border: 1px red solid;
+            /* li를 인라인으로 만들면 블릿이 제거된다. li태그에 설정 */
+            /* 방법1. display -> block -> inline으로 그리고 블릿이 자동으로 제거됨*/
+            display: inline;
+            width: 200px;
+            height: 200px;
+        }
+        /* 방법2. 블릿 제거 후  */
+        ul.inline2{
+            list-style: none;
+        }
+        ul.inline2 li{
+            border: 1px red solid;
+            float: left;
+            /* 가로 배치는 되었지만 블락 엘리먼트의 성격은 그대로 */
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+        }
+        /* 방법3, ????? */
+/*
+        ul.inline3{
+            border: 1px red solid;
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+        }
+*/
+        ul.inline3 li{
+            border: 1px red solid;
+            float: left;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+        }
+        ul.bullet{
+            border: 1px red solid;
+            list-style: none;
+            /* padding-left: 0;  padding은 음수값이 적용되지않는다.*/
+        }
+        ul.bullet li{
+            border: 1px green solid;
+            margin-left: -50px;     /*margin은 음수값이 가능하다.*/
+        }
+
+        /* 목록태그를 메뉴로 만들기 */
+        div fieldset:last-child li{
+            display: inline;
+            border: 1px 1px grey solid;
+            padding-right: 5px;
+        }
+        div fieldset:last-child li:last-child{
+            border: none;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        a:hover{
+            color: red;
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h2>목록관련 CSS속성</h2>
+    <div>
+        <fieldset>
+            <legend>당신이 좋아하는 스포츠는?</legend>
+            <ul class="sport">
+                <li>축구</li>
+                <li>배구</li>
+                <li>야구</li>
+            </ul>
+        </fieldset>
+
+        <fieldset>
+            <legend>당신이 좋아하는 스포츠는?</legend>
+            <ul class="image">
+                <li>축구</li>
+                <li>배구</li>
+                <li>야구</li>
+            </ul>
+        </fieldset>
+
+        <fieldset>
+            <legend>당신이 좋아하는 스포츠는?(li를 인라인으로)[방법1]</legend>
+            <ul class="inline">
+                <li>축구</li>
+                <li>배구</li>
+                <li>야구</li>
+            </ul>
+        </fieldset>
+
+        <fieldset>
+            <legend>당신이 좋아하는 스포츠는?(li를 인라인으로)[방법2]</legend>
+            <ul class="inline2">
+                <li>축구</li>
+                <li>배구</li>
+                <li>야구</li>
+            </ul>
+        </fieldset>
+
+        <fieldset>
+            <legend>당신이 좋아하는 스포츠는?(li를 인라인으로)[방법3]</legend>
+            <ul class="inline3">
+                <li>축구</li>
+                <li>배구</li>
+                <li>야구</li>
+            </ul>
+        </fieldset>
+        ​
+        <fieldset class="fieldset">
+            <legend>당신이 좋아하는 스포츠는?(블릿만 제거)</legend>
+            <ul class="bullet">
+                <li>축구</li>
+                <li>배구</li>
+                <li>야구</li>
+            </ul>
+        </fieldset>
+
+        <fieldset>
+            <legend>UL을 TOP메뉴로 구현</legend>
+            <ul>
+                <li><a href="https://www.nate.com">회원가입</a></li>
+                <li>공지사항</li>
+                <li>로그인</li>
+                <li>게시판</li>
+            </ul>
+        </fieldset>
+
+    </div>
+    <span style="background-color: #940927; width: 200px; height: 200px;">인라인</span>
+</body>
+
+</html>
