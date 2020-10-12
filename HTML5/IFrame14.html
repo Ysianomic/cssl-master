@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFrame.html</title>
+</head>
+<body>
+    <!-- 
+        IFrame태그 : 인라인 프레임
+                    화면속의 화면을 구성할때 사용하는 태그
+
+        주요속성
+        src : 프레임 안의 내용을 구성할 문서 경로나 사이트 경로
+        frameborder : 인라인 프레임의 테두리 두께
+        height
+        width
+        scrolling:auto : 프레임안의 내용에 따라 자동으로 스크롤바가 생김(기본값)
+                    no : 내용이 많아도 안생기게 설정
+                    yes : 내용이적어도 무조건 생김
+        marginhieght : 프레임과 내용사이의 세로여백
+        marginwidth : 가로여백
+     -->
+     <div>
+        <h2>화면속의 화면(사이트)</h2>
+        <iframe src="https://www.nate.com" frameborder='0' scrolling='no' width="200" height="200">
+        </iframe>
+
+        <h2>화면속의 화면(페이지)</h2>
+        <iframe src="Link/IFrameInLink.html" frameborder='0' width="400" height="400">
+        </iframe>
+
+
+     </div>
+</body>
+</html>

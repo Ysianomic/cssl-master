@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas19_3.html</title>
+    <script>
+        window.addEventListener('load',function(){
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+            ctx.beginPath();
+            ctx.strokeStyle='red';
+            ctx.moveTo(60,313);
+            ctx.lineTo(120,166);
+            ctx.lineTo(180,76);
+            ctx.lineTo(240,256);
+            ctx.lineTo(300,70);
+            ctx.lineTo(360,200);
+            ctx.lineTo(420,120);
+            ctx.lineTo(480,70);
+            ctx.stroke();
+            ctx.closePath();
+
+            //이미지그리기용 드래그가 되지않는다.
+            var canvasimg = document.getElementById('canvasimg');
+            ctx = canvasimg.getContext('2d');
+            var img = new Image();
+            img.src="../Images/jara.jpg";
+            
+            img.onload = function(){
+                //이미지 원본크기:drawImage(Image객체,x좌표,y좌표)
+                //ctx.drawImage(img,0,0);    
+                //이미지 크기조정:drawImage(Image객체,x좌표,y좌표,가로폭,세로폭)
+                ctx.drawImage(img,0,0,100,50);    
+            };
+            
+            ctx.drawImage();
+        });
+
+    </script>
+</head>
+<body>
+    <div>
+        <h2>canvas태그</h2>
+        <canvas id="canvas" width="550" height="450" style="background-color: bisque;"></canvas>
+        <canvas id="canvasimg" width="300" height="300" style="border: 1px green solid; "></canvas>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas19_2.html</title>
+</head>
+<body>
+    <div>
+        <h2>canvas태그</h2>
+        <!-- 캔버스의 가로폭 세로폭은 반드시 속성으로 설정 -->
+        <canvas id="canvas" width="200" height="200" style="background-color: antiquewhite;"></canvas>
+    </div>
+    <script>
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+
+        ctx.font = '25 궁서체';
+        ctx.fillStyle='blue';   //채우기 색상 설정
+        
+        //기준선 보이기
+        ctx.strokeStyle = 'red';    //선 색상 결정
+        ctx.moveTo(50,20);
+        ctx.lineTo(50,180);
+        ctx.stroke();  //선긋기
+
+        //그림자 표시를 위한 설정
+        ctx.shadowColor = 'rgba(0,255,0,0.8)';
+        ctx.shadowOffsetX = 5;
+        ctx.shadowOffsetY = 5;
+        ctx.shadowBlur = 5; //최대값 100
+        ctx.textAlign = 'start';
+        ctx.fillText('HTML_START',50,50);
+
+        ctx.textAlign = 'end';
+        ctx.fillText('HTML_END',50,80);
+
+        ctx.textAlign = 'left';
+        ctx.fillText('HTML_LEFT',50,140);
+
+        ctx.textAlign = 'right';
+        ctx.fillText('HTML_RIGHT',50,170);
+        
+        ctx.textAlign = 'center';
+        ctx.fillText('HTML_CENTER',50,110);
+    </script>
+</body>
+</html>

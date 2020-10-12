@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IF04.html</title>
+    <script>
+         /*
+       if(비교식이나 논리식뿐 아니라 모든식 즉 모든값이 올 수있다.)
+       자바에서는 true아니면 false를 판단할 수 있는
+       비교식이나 논리식이 와야 한다(산술식(x))
+       자스에서는 모든 식이 가능하다.
+       0이나 null 그리고 false 이외의  모든 값은  true로 판단하기때문에.....
+       */
+       var nullvar = null,num1 = num2 =10;
+       if(nullvar) document.write('null은 true다<br/>');
+       else document.write('null은 false다<br/>');
+
+       if(num1 - num2)//자바 X
+        document.write('num1-num2은 true다<br/>');
+       else document.write('num1-num2은 false다<br/>');
+       /* 삼항 연산자 */
+        /*
+        자바와는 다르게 판단식(모든식)이 참이거나 거짓일때
+        결과값을 변수에 담지 않아도 됨.
+
+        방식1]
+        //자바에서는 에러]
+        판단식 ? 참일때 실행할 문장 : 거짓일때 실행할 문장;
+        방식2]
+        var 변수 =판단식 ? 참일때 값 : 거짓일때 값;
+        */
+        //방식1]자바 X
+        num1 > num2 ? document.write(num1+'은 '+num2+'보다 크다'):document.write(num1+'은 '+num2+'보다 크지 않다<br/>');
+        //방식2]자바 O
+        var result=num1 > num2 ?num1+'은 '+num2+'보다 크다':num1+'은 '+num2+'보다 크지 않다';
+        document.write(result);
+    </script>
+   
+</head>
+<body>
+    <fieldset>
+        <legend>성적 출력</legend>
+        국어 <input type="text" id="kor"/>
+        영어 <input type="text" id="eng"/>
+        수학 <input type="text" id="math"/>
+        <span id='span' style='color:red;font-weight:bold;'>여기에 출력</span>
+        <button onclick="getGrade();">확인</button>
+    </fieldset>
+    <script>
+        //입력점수 얻기       
+        var korInput= document.getElementById('kor');
+        var engInput= document.getElementById('eng');
+        var mathInput= document.getElementById('math');       
+        //span태그(요소)객체 얻기
+        var span = document.getElementById('span');
+        
+        function getGrade(){
+            var kor = parseInt(korInput.value);
+            var eng = parseInt(engInput.value);
+            var math = parseInt(mathInput.value);
+            //평균 구하기
+            var avg=(kor+eng+math)/3;
+            if(avg >=90) span.innerHTML='A학점';
+            else if(avg >=80) span.innerHTML='B학점';
+            else if(avg >=70) span.innerHTML='C학점';
+            else if(avg >=60) span.innerHTML='D학점';
+            else span.innerHTML='F학점';
+            span.innerHTML +=':'+avg;
+        }
+
+    </script>
+</body>
+</html>

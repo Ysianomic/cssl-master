@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation22_1.html</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Geolocation API-현재 위치의 위도와 경도 얻기</legend>
+        <span id="display" style="color: red; font-size: 1.5em; font-weight: bold;"></span>
+    </fieldset>
+    <script>
+        console.log(window.navigator.geolocation);
+        //DOM객체얻기
+        var span = document.getElementById('display');
+        if(navigator.geolocation){
+            span.innerHTML='Geolocation API 지원브라우저입니다.'
+            //PostionOptions객체 설정용
+            var options={timeout:3000,maxinumAge:5000};
+            //현재 위치정보 딱 한번만 얻기
+            navigator.geolocation.getCurrentPosition(successCallback,errorCallback,options);
+        }
+        else{
+            span.innerHTML='Geolocation API 지원하지않는 브라우저입니다.'
+        }
+
+        //위치정보를 얻었을때 자동으로 호출되는 콜백함수:인자는 position객체
+        function successCallback(position){
+            console.log('position의 자료형: '+position);
+            console.log(position);
+            //위도/경도얻기
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            span.innerHTML='위도 : '+lat+'경도 : ' + lng;
+        }
+
+        var errorCallback=function(error){
+            switch(error.code){
+                case 1: span.innerHTML='권한이 없습니다.';break;
+                case 2: span.innerHTML='위치가 확인불가합니다.';break;
+                case 3: span.innerHTML='시간초과';break;
+                default: span.innerHTML=error.message;
+            }
+        }
+    </script>
+</body>
+</html>

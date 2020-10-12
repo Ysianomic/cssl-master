@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form13_1.html</title>
+</head>
+<body>
+    <!-- 
+        http:// : 프로토콜(약속)
+        form태그 : 사용자가 입력한 값 혹은 선택한 겂을 서버로 전송할때 사용하는 태그
+        get/post방식이있음
+        
+        post방식은 바디(데이터가 크기가 안정해짐)에 데이터가들어감 파일업로드는 post방식
+        get방식은 헤더(데이터가 크기가 정해짐)에 포함이되서 들어감
+
+        주요속성 : 
+        action : 사용자가 입력한 값을 전송할 서버상에 있는 페이지경로 지정
+                 (action생략시 기본값은 자신의 페이지)
+        method : get/post(method 생략시 기본값은 get)
+                 데이터 전송방식을 의미
+
+        target : 이 속성은 a태그의 target속성과 같은 기능
+        enctype : URL 인코딩 방식 지정
+                application/x-www-form-urlencoded(디폴트값)
+                multipart/form-data(파일 업로드)
+     -->
+
+     <div>
+        <h2>form태그로 데이터 전송</h2>
+        <h3>GET방식으로 요청</h3>
+        <form action="https://www.naver.com">
+            아이디 : <input type="text" name = "user"/>
+            비밀번호 : <input type="password" name = "pass"/>
+            <input type="submit" value="로그인"/>
+
+        </form>
+        <h3>POST방식으로 요청</h3>
+        <form action="https://www.naver.com" method="POST">
+            아이디 : <input type="text" name = "user"/>
+            비밀번호 : <input type="password" name = "pass"/>
+            <input type="submit" value="로그인"/>
+
+        </form>
+        
+        <h3>action 속성으로(현재페이지 다시요청)/method속성 생략</h3>
+        <form>
+            아이디 : <input type="text" name = "user"/>
+            비밀번호 : <input type="password" name = "pass"/>
+            전화번호 : <input type="tel" name="tel"/>
+            이메일 : <input type="email" name="email"/>
+            <!-- 데스크톱은 타입이 의미없으나 스마트폰에서는 입력장치(숫자만있거나 @는형태)가 바뀜 -->
+            <input type="submit" value="로그인"/>
+
+            <h3>a 태그로 데이터 전송</h3>
+            <a href="https://www.naver.com?user=KIM&pass=9999">get방식</a>
+
+
+        </form>
+
+
+     </div>
+
+</body>
+</html>

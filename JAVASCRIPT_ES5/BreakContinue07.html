@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+        break문 : switch문이나 반복문을 빠져나갈때
+        continue문 :반복문 처음으로 갈때
+
+        break문이나 continue이후의 문장으 실행이 안됨.
+        */
+        var i=0;
+        while(-1){  //자바의 while(true)와 같다
+            i++;
+            document.write('i='+i+'<br/>');
+            if(i==3) break;
+            document.write('break문 이후<br/>');
+            if(i%2==0) continue;
+            document.write('continue문 이후<br/>');
+        }
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math10.html</title>
+    <script>
+        //Math.함수명()식으로 호출한다.
+        //1. abs():절대값
+        console.log('-10의 절대값:'+Math.abs(-10));
+        //2. pow():지수
+        console.log('2의3승:'+Math.pow(2,3));
+        //3.  round():반올림-소수점 첫째자리에서 반올림
+        console.log('3.159반올림:'+Math.round(3.159));
+        //4. ceil():올림
+        console.log('3.159올림:'+Math.ceil(3.159));
+        //5. floor():올림
+        console.log('3.159내림:'+Math.floor(3.9));
+        //6. random(): 0.0<=값<=1.0사이의 값을 랜덤하게 발생시킴
+        console.log(parseInt(Math.random()*9)+1);   //1에서9사이
+
+        function setRandomNumber(random,start,end) {
+		for(var i=0; i < random.length;i++) {
+			while(true) {
+				//랜덤하게 숫자 발생 시키자
+				var randomNumber = parseInt(Math.random()*(end-start+1))+start;
+				//랜덤하게 발생시킨 숫자의 중복 여부체크를 위한 변수 선언	
+				var isDuplicated = false;
+				//랜덤하게 발생시킨 숫자(randomNumber)와 배열에 저장된 값의
+				//중복 여부 체크	
+				for(var k=0;k <=i-1;k++) {
+					if(randomNumber==random[k]) {//중복된 경우
+						isDuplicated=true;
+						break;
+					}
+				}/////////중복 체크용 for문				
+				if(!isDuplicated) {//중복되지 않는 경우
+					random[i]=randomNumber;
+					break;//while문 빠져 나가기
+				}				
+			    
+			}///while			
+		}////////////for
+		
+    }//////////////setRandomNumber
+    var lotto = new Array(6);
+    setRandomNumber(lotto,1,45);
+    lotto.forEach(function(item){
+        console.log(item);
+    });
+
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>로또 발생기</legend>
+        <button onclick="showLottoNumber();">로또 발생</button>
+        <span id = 'lotto' style="font-size: 2em; color: red;"></span>
+    </fieldset>
+    <script>
+        var span = document.getElementById('lotto');
+        function showLottoNumber(){
+            lotto=new Array(6);
+            setRandomNumber(lotto,1,45);
+            var lottoNumber='';
+            lotto.forEach(function(item){
+                lottoNumber+=item+' &nbsp;';
+            });
+            span.innerHTML=lottoNumber;
+        }
+    </script>
+
+</body>
+</html>

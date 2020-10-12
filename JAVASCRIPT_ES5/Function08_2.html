@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function08_2.html</title>
+    <script>
+        var param = 100,args = 1;
+        console.log(window.param);
+        function callByValue(param,args){
+            var temp = param;
+            param = args;
+            args = temp;
+            console.log('callByValue함수 안 :param=%s ,args=%s',param,args);
+        }
+        callByValue(param,args);
+        console.log('callByValue함수 밖 :param=%s ,args=%s',param,args);
+
+        //callbyreference. 참조에 의한 호출. 값이 아닌 객체의 주소전달
+        var array = [100,1];
+        var callByRef = function(arr){
+            var temp = arr[0];
+            arr[0] = arr[1];
+            arr[1] = temp;
+            console.log('callByRef 함수 안: arr[0] = %s, arr[1] = %s',arr[0],arr[1]);
+        }
+        callByRef(array);
+        console.log('callByRef 함수 밖: array[0] = %s, array[1] = %s',array[0],array[1]);
+
+        //지역변수와 전역변수 충돌시 지역변수가 우선
+        var mVar = 100;
+        function conflict(mVar){
+            console.log(this);
+            this.mVar = mVar*2;  //매개변수 = 매개변수 *2;
+            //this.mVar는 함수밖의 전역변수를 지칭한다.
+            console.log('함수 안 mVar:',mVar);
+        }
+        window.conflict(mVar);
+        console.log('함수 밖 mVar:',mVar);
+        //참조에 의한 호출 예제
+        var member = [];
+        function setMember(member){
+            for(var i=0;i<2;i++){
+                member.push(prompt(i+1+'번째 이름 입력',''));
+                member.push(prompt(i+1+'번째 나이 입력',''));
+                member.push(prompt(i+1+'번째 주소 입력',''));
+            }
+        }
+        //setMember(member);
+        member.forEach(function(item){
+            console.log(item);
+        });
+
+        var arr=[9,22,1,6,42,86,48,33,2,17];
+        //1.함수정의
+        function big(arr){
+
+            var temp = arr[0];
+            for(var i=0;i<arr.length-1;i++){
+               for(var k=i+1;k<arr.length;k++){
+                   if(arr[i] < arr[k]){
+                       var temp = arr[i];
+                       arr[i] = arr[k];
+                       arr[k] = temp;
+                   }
+               }
+            }
+
+            }
+        
+        //2.호출
+        big(arr);
+        //3.출력
+        arr.forEach(function(item){
+            console.log(item);
+        });
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

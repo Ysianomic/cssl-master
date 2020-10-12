@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String09.html</title>
+    <script>
+        var str1='안녕 자바스크립트';
+        var str2="Bonjour JavaScript";
+        var str3="HI JS";
+        var str4=new String('hello friends');
+        console.log('str3의 자료형 : %s, 생성자 타입 : %s',typeof str3,str3 instanceof String);
+        console.log('str3의 자료형 : %s, 생성자 타입 : %s',typeof str4,str4 instanceof String);
+        console.log(str3);
+        console.log(str4);
+        
+        //1. 문자열의 길이 얻기 - length속성
+        console.log('str1의 길이:%s',str1.length);
+        console.log('str2의 길이:%s',str2.length);
+        //2. 문자열 객체의 함수를 이용해서 텍스트 꾸미기
+        document.write('<h2>함수로 텍스트 효과주기</h2>');
+        document.write('볼드체(함수) : ' + str1.bold()+'<br/>');
+        document.write('볼드체(태그) : <b>'+str1+'</b><br/>');
+        document.write('이탤릭체(함수) : '+str1.italics()+'<br/>');
+        document.write('이탤릭(태그) : <i>'+str1+'</i><br/>');
+        document.write('함수:'+str1.italics().bold()+'<br/>');
+        document.write('태그:<b><i>'+str1+'</b></i><br/>');
+        document.write('가운데선긋기(함수): '+str1.strike()+'<br/>');
+        document.write('가운데선긋기(태그):<strike> '+str1+'</strike><br/>');
+        var url="https://www.nate.com";
+        document.write('링크걸기(함수) : '+str1.link(url)+'<br/>');
+        document.write('링크걸기(태그) :<a href="'+url+'">'+str1+'</a><br/>');
+        //3. 대소문자 변경
+        document.write('<h2>함수로 텍스트 효과주기</h2>');
+        document.write('대문자 : '+str2.toUpperCase()+'<br/>');
+        document.write('소문자 : '+str2.toLowerCase()+'<br/>');
+        //4.특정 위치(인덱스)의 하나의 문자 얻어오기
+        //charAt(인덱스) : 인덱스는 0부터 시작
+        document.write('<h2>charAt(인덱스)</h2>');
+        document.write('str3에서 인덱스가 3인 문자:' + str3.charAt(3)+'<br/>');
+        document.write('자바스크립트'.charAt(2));
+        //5. 문자열에서 특정 문자열 얻어오기
+        //substirng(시작인덱스,끝인덱스);
+        //끝인덱스 -1
+        document.write('<h2>substring(시작인덱스,끝인덱스></h2>');
+        document.write('ACADEMY'.substring(3,7));
+        //5-1. 문자열에서 특정 문자열얻어오기2
+        //substr(시작인덱스,문자열갯수)
+        document.write('<h2>substr(시작인덱스,갯수)></h2>');
+        document.write('ACADEMY'.substr(3,4));
+        //6. 특정위치의 아스키 코드값 가져오기
+        //charCodeAt(인덱스) : 자바에서는 codePointAt(int index)
+        document.write('<h2>charCodeAt(인덱스)</h2>');
+        document.write('ACADEMY'.charCodeAt(3));
+        //7. 아스키코드값을 문자로
+        //String.fromCharCode(아스키코드값)
+        document.write('<h2>fromCharCode(코드값)</h2>');
+        document.write(String.fromCharCode(68));
+        
+        document.write('<h2>문자열을 배열처럼</h2>');
+        for(var i=0;i<str3.length;i++){
+            document.write(str3[i]+'<br/>');
+        }
+
+        var isNumber=function(str){
+            //자스에서는 숫자이외의 형식의 문자와 숫자 비교시 무조건 false
+            for(var i=0;i<str.length;i++){
+                if(!(str[i]>=0 && str[i]<=9)){
+                    return false;
+                }
+            }
+            return true;
+        };
+        document.write(isNumber('12A')+'<br/>');
+        document.write(isNumber('a12A')+'<br/>');
+        document.write(isNumber('a12')+'<br/>');
+        document.write(isNumber('가12A')+'<br/>');
+        document.write(isNumber('가나다5')+'<br/>');
+        document.write(isNumber('1234')+'<br/>');
+
+
+        //8. 구분자로 문자열 분리 - 배열반환
+        //split(구분자)
+        //만약 해당 구분자가 없으면 무조건 배열크기가 1인 배열에 문자열 전체가 저장됨.
+        document.write('<h2>string[] split(구분자)</h2>');
+        var tel = '010.1234.5678';
+        var arr = tel.split('.');
+        for(i=0;i<arr.length;i++){
+            document.write('arr['+i+']= '+arr[i]+'<br/>');
+        }
+        //9. 특정문자열의 인덱스값 알아내기
+        //indexOf("찾는문자열"):찾는문자열이 존재하면 찾는 문자열의 시작인덱스 값 반환
+        //존재하지않으면 -1반환
+        document.write('<h2>number indexOf(찾는 문자열)</h2>');
+        document.write('ACADEMY'.indexOf('CAD')+'<br/>');
+        document.write('ACADEMY'.indexOf('CaD')+'<br/>');
+        //9-1. 특정문자열의 인덱스값 알아내기2
+        //lastIndexOf("문자열"):반환값은 indexOf()와 동일
+        document.write('<h2>number lastIndexOf(찾는 문자열)</h2>');
+        document.write('ACADEMY'.lastIndexOf('A')+'<br/>');
+        document.write('ACADEMY'.lastIndexOf('a')+'<br/>');
+
+        //아래이메일 주소에서 @와 .사이에있는 값만 얻어오자
+        var email = ['kim@naver.com','park@cyworld.com','lee@nate.com'];
+        //문. 배열을 매개변수로 받아서 가운데 도메인만 얻어서 출력하는 함수를 정의 및 호출
+
+        //함수정의
+        function print(email){
+            email.forEach(function(item){
+                var start = item.indexOf('@')+1;
+                var end = item.lastIndexOf('.');
+                document.write(item.substring(start,end)+'<br/>');
+            });
+        }
+        //함수호출
+        print(email);
+
+
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

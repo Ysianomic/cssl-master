@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebStorage21_2.html</title>
+</head>
+<body>
+    <fieldset>
+        <legend>웹 스토리지를 이용한 방문자 회원수 카운팅(세션 스토리지)</legend>
+        <span id="display" style="color: red; font-size: 1.2em; "></span>
+        <button onclick="removeStorage();">세션 스토리지 삭제</button>
+    </fieldset>
+    <script>
+        //브라우저의 웹 스토리지 지원여부 판단
+        console.log(typeof(Storage) != undefined);
+        var span;
+        if(typeof(Storage) != undefined){   //웹스토리지를 제공하는 브라우져
+            //span객체얻기
+            span = document.getElementById('display');
+            span.innerHTML='웹 스토리지를 지원하는 브라우저입니다.';
+            console.log('자료형: %s, SessionStorage: %s',typeof sessionStorage,sessionStorage);
+            //세션스토리지에 저장한 방문횟수 읽기
+            var counter = sessionStorage.getItem('counter');
+            console.log('counter : %s',counter);
+            if(counter === null){
+                //방문횟수 1로 초기화
+                sessionStorage.setItem('counter',1);
+                span.innerHTML = '처음 방문하셨네요.';
+            }
+            else{   //세션스토리지에 키값이 있는경우
+                    //방문횟수 증가
+                    counter++;
+                    span.innerHTML=counter+'번째 방문 하셨군요';
+                    //다시 방문횟수 스토리지에 저장
+                    sessionStorage.setItem('counter',counter);
+
+            }
+
+            function removeStorage(){
+                span.innerHTML='방문 횟수가 초기화되었습니다.';
+                sessionStorage.removeItem('counter');
+            }
+        }
+    </script>
+</body>
+</html>

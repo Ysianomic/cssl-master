@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebStorage21_3.html</title>
+    <script>
+        var keyText,valText,txtArea,span;
+        window.onload=function(){
+            //DOM(Document Object Model)객체 얻기
+            keyText = document.getElementById('key');
+            valText = document.getElementById('val');
+            txtArea = document.getElementById('result');
+            span = document.getElementById('infoMessage');
+        };
+
+
+
+
+        //저장
+        function save(){
+            console.log('키:%s, 값:%s',keyText.value,valText.value);
+            //같은 키값으로 저장시 기존 키값으로 저장된 데이터를 덮어씀
+            localStorage.setItem(keyText.value,valText.value);
+            span.innerHTML="\""+keyText.value+'"키로 "'+valText.value+'"값 저장';
+            //입력값 클리어
+            keyText.value = '';
+            valText.value = '';
+            //요소에 포커스
+            keyText.focus();
+        }
+
+        //모두조회
+        var selectList=function(){
+            for(var i=0;i<localStorage.length;i++){
+                //키값얻기
+                var key = localStorage.key(i);
+                //값 얻기
+                var value = localStorage.getItem(key);
+                //텍스트에어리어 출력
+                txtArea.value+=key+' : '+value+'\r\n';
+            }
+        };
+
+        //키값으로 조회
+        function selectOne(){
+            if(keyText.value == ''){
+                alert('키값을 입력하세요.');
+                keyText.focus();
+                return;
+            }
+            alert(keyText.value+'로 조회한 결과: '+localStorage.getItem(keyText.value))
+        }
+
+        //하나삭제
+        var removeOne=function(){
+            if(keyText.value.length == 0){
+                alert('키값을 입력하세요.');
+                keyText.focus();
+                return;
+            }
+            var value = localStorage.getItem(keyText.value);
+            if(value == null){
+                alert('키 값이 존재하지 않습니다.')
+                keyText.value='';
+                keyText.focus();
+                return;
+            }
+            localStorage.removeItem(keyText.value);
+            alert('삭제 되었습니다.');
+            //삭제 확인차 모두조회
+            selectList();
+        };
+
+        //전부삭제
+        function removeAll(){
+            if(localStorage.length ==0){
+                alert('삭제할 데이터가 없습니다.')
+                return;
+            }
+            localStorage.clear();
+            txtArea.clear();
+            alert('모두삭제 되었어요');
+            selectList();
+        }
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>웹스토리지-저장/조회/삭제<span id="infoMessage" style="color:green;font-size:0.9em"></span></legend>
+        <table style="background-color:red;border-spacing: 1px;width:90%">    
+            <tr style="background-color:white">
+                <td style="width:10%">키</td>
+                <td><input style="width:90%" type="text" id="key" /></td>
+            </tr>
+            <tr style="background-color:white">
+                <td>값</td>
+                <td><input style="width:90%" type="text" id="val" /></td>
+            </tr>
+            <tr style="background-color:white">
+                <td colspan="2">
+                    <input type="button" onclick="save()" value="저장" />
+                    <input type="button" onclick="removeOne()" value="하나 삭제" />
+                    <input type="button" onclick="removeAll()" value="모두 삭제" />
+                    <input type="button" onclick="selectOne()" value="키로 조회" />
+                    <input type="button" onclick="selectList()" value="모두 조회" />
+                </td>
+            </tr>
+            <tr style="background-color:white">
+                <td colspan="2">
+                    <textarea id="result" style="width:95%;height:200px"></textarea>
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+
+    <fieldset>
+        <legend>개인화 설정</legend>
+        <input type="checkbox" name='menu' value="날씨"/>날씨
+        <input type="checkbox" name='menu' value="밴드"/>밴드
+        <input type="checkbox" name='menu' value="영화"/>영화
+        <input type="checkbox" name='menu' value="자동차"/>자동차
+        <input type="checkbox" name='menu' value="부동산"/>부동산
+        <button onclick="setMenu()">저장</button><br/>
+        <span id="menu" style="color: red; font-size: 1.2em; font-weight: bold;"></span>
+    </fieldset>
+    <!--  
+    <script>
+        var spanMenu = document.getElementById('menu');
+        spanMenu.innerHTML='';
+        //로컬 스토리지에 저장된 메뉴가 있으면 가져와서 span에 뿌려주기
+        if(localStorage.length != 0){
+            /*
+            var menuCounter=0;
+            for(var i=0;i<localStorage.length;i++){
+                if(localStorage.getItem('MENU'+(i+1))){
+                    menuCounter++;
+                }
+            }
+            
+            if(menuCounter !=0){
+                for(var i=0;i<localStorage.length;i++){
+                    var menuName = localStorage.getItem('MENU'+(i+1));
+                    if(menuName != null){
+                        spanMenu.innerHTML+=menuName+'';
+                    }
+                }
+            }
+            */
+            for(var i=0;i<localStorage.length;i++){
+                var key = localStorage.key(i);
+                if(key.substr(0,4)=='MENU')
+                    spanMenu.innerHTML+=localStorage.getItem(key);
+            }
+
+
+        }
+
+        function setMenu(){
+            //로컬 스토리지 초기화
+            var length = localStorage.length;
+            for(var i=0;i<length;i++){
+                var key = localStorage.key(i);
+                if(key.substr(0,4)=='MENU')
+                    localStorage.removeItem(key);
+            }
+
+            spanMenu.innerHTML='';
+            var checkBoxes = document.getElementsByName('menu');
+            console.log(checkBoxes.length);
+            for(var i=0;i<checkBoxes.length;i++){
+                console.log(checkBoxes[i].checked);
+                if(checkBoxes[i].checked){
+                    //로컬 스토리지에 저장
+                    localStorage.setItem('MENU'+(i+1),checkBoxes[i].value);
+                    //메뉴표시
+                    spanMenu.innerHTML+=checkBoxes[i].value+' ';
+                }
+            }
+        }
+    </script>
+-->
+ <script>
+    var spanMenu = document.getElementById('menu');
+    spanMenu.innerHTML='';
+    //로컬 스토리지에 저장된 메뉴가 잇으면 가져와서
+    //span에 뿌려주기
+    if(localStorage.length !=0){ 
+        for(var i=0;i < localStorage.length;i++){
+            var key=localStorage.key(i);
+            if(key.substr(0,4)=='MENU')
+                spanMenu.innerHTML+=localStorage.getItem(key)+ ' ';
+        }         
+    }
+    function setMenu(){
+        //로컬 스토리 초기화
+        //방법1]            
+        for(var i=localStorage.length;i >=0;i--){
+            var key=localStorage.key(i);                        
+            if(key !=null && key.substr(0,4)=='MENU'){
+                console.log(key);
+                localStorage.removeItem(key);                    
+            }
+        }            
+        /*
+        //방법2]
+        forEach(callback(element[,index, array]){}) :배열에만 적용할수있는 for문
+        element-배열에 꺼낸 요소하나를 담는변수
+        index - 배열에 꺼낸 요소의 인덱스 담는변수
+        array-forEach()를 호출한 배열 자체
+        
+        ex.
+        var arr=[1,2,3,4,5];
+        arr.forEach(function(ele,index,obj)){
+            console.log('%s : %s',ele,index);
+            console.log(obj);
+        }
+        
+        for ~ in문:배열과 객체에 모두 적용가능.
+                    단, 주로 객체에 적용한다
+                    객체에 적용시 키값을 꺼내온다.
+        for(variable in object){}
+        variable : 객체에서 꺼낸 키값이 저장됨.
+                    단,배열인 경우는 인덱스가 저장됨.
+        object:배열혹은 객체
+        
+        ex.
+        var obj={'name':'가길동','age':20,'addr='가산동'};
+        for(var key in obj){
+            //단, 객체.key가 아닌 객체[key]식으로 접근해야 된다.
+            console.log('키:%s, 값:%s',key,obj[key]);
+        }
+
+        for(var key in localStorage) {
+            if(key.substr(0,4)=='MENU'){                    
+                console.log(key);
+                localStorage.removeItem(key);                    
+            }
+        }*/
+        spanMenu.innerHTML='';
+        var checkboxs=document.getElementsByName('menu');
+        console.log(checkboxs.length);
+        for(var i=0;i < checkboxs.length;i++){
+            console.log(checkboxs[i].checked);
+            if(checkboxs[i].checked){//체크 했다면
+                //로컬 스토리지에 저장
+                localStorage.setItem('MENU'+(i+1),checkboxs[i].value);
+                //메뉴 표시
+                spanMenu.innerHTML+=checkboxs[i].value+' ';
+            }
+        }
+    }
+
+</script>
+
+
+
+</body>
+</html>

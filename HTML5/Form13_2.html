@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form13_2.html</title>
+</head>
+<body>
+    
+    <!-- 
+        imput태그
+        : form태그의 하위요소로 type속성에 다양한값을 지정함으로써
+        여러가지 형태의 모양을 만들어 사용자로부터 입력이나 선택을
+        받을 수 있는 태그
+        주요속성
+            type:모양을 나타내는 값 지정
+            text,password,checkbox,radio등
+
+            text : 한줄 입력상자
+            hidden : 값을 웹브라우저에 표시하지않고 전송하고자 할때 웹 브라우저에 보이지 않음
+            웹 프로그래밍시 자주 사용
+        
+            submit : 갑을 submit할때
+            reset: 초기화 할때
+            image : 값을 submit할때, 주로 버튼을 이미지로 만들때 사용
+            button : 버튼 모양을 표시할때, 아무런 액션도 일어나지 않음
+            file : 파일 찾아보기 버튼과 한줄 입력상자 표시
+
+        공통사항
+            value : 사용자가 입력한 값이 저장되는 속성 혹은 값을 미리 지정시에 사용
+            name  : 값 전송시 구분하기 위한 이름을 지정
+
+        값 전송하려면 반드시 name속성을 지정 checkbox나 radio계열을 제외하고는 name속성을 다르게 지정
+        해야한다.
+        왜냐하면 name속성에 지정한 값을 이용해 사용자가 전송한 값을 받아서
+
+        type이 radio 및 checkbox는 반드시 value속성에 값을 지정해야한다. 
+        value속성에 값을 지정해야 지정된 값이 전송이된다.
+        그리고 name속성은 같은 그룹으로 묶기위해서 name은 동일하게 지정해야한다.
+
+        모든 태그는 id속성을 가질 수 있다.
+        단, 한페이지안에서 id값은 중복될 수없다.
+     -->
+
+     <div>
+        <h2>form태그의 하위 요소들(태그들)</h2>
+        <h3>input계열의 type="text"</h3>
+        <!-- 한줄 입력상자 
+            주요속성
+            size : 한줄입력상자의 크기 지정(영문자나 숫자 기준)
+            maxlength : 최대입력할 수 있는 글자 수 지정
+            value : 사용자가 입력한 값이 저장되는 속성
+            disalbed = "diabled" : 비활성화
+            enabled = "enabled" : 활성화(기본값)
+        
+        -->
+        기본 텍스트 상자 : <input type="text"/><br/>
+        속성 추가 : <input type="text" size="10" maxlength="5" value="기본텍스트" disabled/><br/>
+        주민 번호 : <input type="text" size="6" maxlength="6"/> - <input type="text" size="7" maxlength="7"/><br/>
+        홈페이지 : <input type="text" value="http://"/>
+
+        <h3>input계열의 type="password"</h3>
+        <!-- 
+            type이 text일때와 속성이 동일하다.
+            입력한 값이노출이 안되고 ★모양으로 입력됨
+         -->
+         기본패스워드 : <input type="password"/><br/>
+         패스워드 지정 : <input type="password" value="1234"/>
+
+         <h3>input계열의 type="checkbox"</h3>
+         <!-- 
+            checkbox:여러개 선택시,
+            name을 같게 지정(그룹으로 지정),value속성에 값 미리 지정, value에 지정한 값이 action에 지정한
+            페이지로 전송됨
+            미리 선택해서 보여줄때 checked="checked"
+
+          -->
+          <fieldset>
+            <legend>당신의 관심사항</legend>
+            <form>
+                <input type="checkbox" name="inter" value="pol" id="pol"/><label for="pol">정치</label>
+                <input type="checkbox" name="inter" value="eco" id="spo"/><label for="spo">경제</label>
+                <input type="checkbox" name="inter" value="ent"/>연예
+                <input type="checkbox" name="inter" value="spo"/>스포츠
+                <input type="submit" value="확인"/>
+            </form>
+          </fieldset>
+
+          <h3>type="radio"</h3>
+          <!-- 
+            radio : 여러개 중 하나 선택시, 나머지는 checkbox와 동일
+            name속성에 값을 다르게 주면 여러개 선택가능
+           -->
+           <fieldset>
+            <legend>당신의 성별</legend>
+            <form>
+                <input type="radio" name="gender" value="man" id="man"/><label for="man">남자</label>
+                <input type="radio" name="gender" value="woman" id="woman" checked/><label for="woman">여자</label>
+                <input type="radio" name="gender" value="trans"/>트랜스젠더
+                <input type="submit" value="확인"/>
+            </form>
+          </fieldset>
+
+          <h3>type="file"</h3>
+          <!-- 
+            input type="text"  의 속성과 동일하다.
+            단, value속성에 값을 지정하더라도 디폴트로 텍스트상자에 보이지않는다.(브라우저마다다름)
+            단,선택한 파일은 value속성에 저장된다.
+           -->
+           기본 : <input type="file"/><br/>
+           속성추가 : <input type="file" size="50" value="기본 텍스트"/>
+
+           <h3>type="hidden""</h3>
+           <!-- 
+            - 프로그래밍시 자주 사용하는 폼의 하위 태그
+            - 웹브라우저에 아무 모양도 보이지 않ㅇ므
+            - 값을 숨겨서 전송할대 사용
+            (값 전송시 value와 name속성을 만드시 주어라)
+            - 주로 키값(primary key)등을 전송할때 많이 사용
+            -->
+            <form>
+                <input type="hidden" name="no" value="110"/>
+                아이디 <input type="text" name="id"/>
+                이름 <input type="text" name="name"/>
+
+                <input type="submit" value="확인"/>
+            </form>
+            <h3>다양한 버튼들</h3>
+            <fieldset>
+                <legend>각종 버튼</legend>
+                <form action="https://www.nate.com">
+                    아이디 : <input type="text" name="id" placeholder="아이디를 입력하세요."/>
+                    성별 : <input type="radio" name="gender" value="man"/>남자
+                            <input type="radio" name="gender" value="woman"/>여자
+                    관심과목 :
+                    <input type="checkbox" name="sugject" value="자바"/>자바
+                    <input type="checkbox" name="sugject" value="html5" checked/>html5
+                    <input type="checkbox" name="sugject" value="css3"/>css3
+                   <!-- 
+                       클릭시 무조건 action에 지정한 페이지나 url로 데이터 전송 및??
+                    -->
+                    <input type="submit" value="확인"/>
+                    <!-- 클릭시 초기화됨 -->
+                    <input type="reset" value="초기화"/>
+                    <!-- 일반 버튼모양으로 아무런 기능도 하지 않음 -->
+                    <input type="button" value="버튼"/>
+                    <!-- 브라우저 종류나 버전에따라 submit기능이 있기도하고 없기도 함 -->
+                    <button>버튼태그</button>
+                    <input type="image" alt="이미지가 없음" src="../Images/button.jpg" style="width: 30px; height: 30px;"/>
+ 
+                </form>
+
+
+            </fieldset>
+
+            <h3>&lt;select&gt;태그</h3>
+            <!-- 
+                속성
+                size : 보여줄 목록의 개수지정(기본값 1)
+                multiple : 다중선택가능
+                - 단일 선택이 기본
+                - 종료태그 있다
+                - 하위태그로 option태그를 갖는다.
+                option태그의 value 속성에 값ㅇ르 지정함으로써 목록을 표시한다.
+                selected속성은 option태그의 속성
+
+             -->
+             <form>
+                <select name="grade" size="2" multiple>
+                    <option > >>학력선택<< </option>
+                    <option value="ele">초등학교</option>
+                    <option value="mid">중학교</option>
+                    <option value="hig" selected>고등학교</option>
+                    <option value="uni">대학교</option>
+                </select>
+                <input type="submit" value="확인"/>
+             </form>
+             <h3>&lt;textarea&gt;태그</h3>
+             <!-- 
+                - rows와 cols로 크기 결정(영문자/숫자 기준)
+                - value속성으로 사용자가 입력한 값을 얻는다
+                - 기본 텍스트를 줄때는 value속성이 아닌 시작태그와 종료태그 사이에 주면된다.
+              -->
+              기본 : <textarea></textarea><br/>
+              속성 추가 : <textarea cols="50" rows="10" ></textarea><br/>
+              기본 텍스트적용 : <textarea cols="50" rows="10" >기본텍스트</textarea>
+     </div>
+
+
+</body>
+</html>

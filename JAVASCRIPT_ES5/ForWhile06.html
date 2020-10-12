@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ForWhile06.html</title>
+    <script>
+      /*
+         자바: for문 안에서 선언된 변수는 for문이 끝나면
+         소멸된다
+         자스: script태그 안에서 선언된 변수는
+         해당 페이지 모든 영역에서 사용가능하다.
+         for(var 변수 =초기값;반복조건;증감식){
+           반복조건이 참일때 수행할 명령문들
+         }
+      */  
+      for(var i=0;i < 5;i++){
+          var gVar='for문 안에서 선언된 변수';
+          document.write('i='+i+'<br/>');
+      }
+      document.write('for문이 끝난후 :i='+i+',gVar:'+gVar);
+      /*
+        1 0 0 0 0
+        0 1 0 0 0
+        0 0 1 0 0
+        0 0 0 1 0
+        0 0 0 0 1
+        를 웹브라우저에 출력하여라.(for문 및 while문 버전)
+        단,while문 출력시에는 table태그를 사용해라
+        */
+        document.write('<h2>for문으로 출력</h2>');
+        for(i=0;i<5;i++){
+            for(var k=0;k<5;k++){
+                if(k==i) document.write('1 &nbsp;&nbsp;');
+                else document.write('0 &nbsp;&nbsp;');
+            }
+            document.write('<br/>');
+        }
+        document.write('<h2>while문으로 출력</h2>');
+        var table="<table style='text-align:center;border-spacing:2px;background-color:red;width:200px'>";
+        i=k=0;
+        while(i < 5){
+            table+="<tr style='background-color:white'>";
+            while(k < 5){
+                if(i==k)
+                    table+="<td style='background-color:green'>1</td>";
+                else
+                table+="<td>0</td>";
+                k++;
+            }
+            table+="</tr>";
+            k=0;
+            i++;
+        }
+        table+="</table>";
+        document.write(table);
+        //문]table태그를 사용하여 구구단을 출력하여라.
+        //(for문 혹은 while문 사용)
+        document.write('<h2>구구단 출력</h2>');
+        document.write("<table style='text-align:center;border-spacing:2px;background-color:red;width:600px;height:300px'>");
+        for(i=1;i<=9;i++){
+            document.write("<tr style=\"background-color:white\">")
+            for(k=2;k<=9;k++){
+                document.write("<td>"+k+" * "+i+"="+i*k+"</td>");    
+            }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    </script>
+</head>
+<body>
+    <script>
+        document.write('<br/>body태그 안에서 사용 :i='+i+',gVar:'+gVar);
+    </script>
+</body>
+</html>
