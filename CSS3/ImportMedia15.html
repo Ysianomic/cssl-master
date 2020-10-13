@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImportMedia15.html</title>
+    
+    <!-- <link href="../Styles/import.css" rel="stylesheet"> -->
+    <style>
+        /* import규칙을 이용한 외부 css파일 연결
+        반드시 style태그 안에
+        반드시 style태그 최상단에 위치(안그러면 적용이 안된다.) 
+        */
+        @import url(../Styles/import.css);
+        .content{
+            color: red;
+            background-color: springgreen;
+        }
+        /* media규칙은 위치에 상관없음 */
+        @media screen{
+            .content{
+                color: white;
+            }
+        }
+        @media print{
+            .content{
+                color: black;
+                background-color: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <p>
+            [서울경제] 방탄소년단(BTS)이 최근 한국전쟁 70주년을 언급한 것을 두고 중국 누리꾼이 격앙하며 불매운동 움직임까지 보이자 전 세계 누리꾼과 외신들이 일제히 비판하고 나섰다. 
+            특히 트위터에는 중국의 민족주의적 모습을 비판하며 중국 공산당을 독일의 나치에 비유한 ‘차이나치(China+Nazi)’ 해시태그까지 퍼지고 있다.
+        </p>
+
+    </div>
+</body>
+</html>

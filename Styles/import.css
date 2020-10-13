@@ -1,0 +1,11 @@
+.content{
+    width: 80%;
+    background-color: honeydew;
+    margin: 0 auto;
+}
+.content p{
+    width: 100%;
+    font-size: 1.5em;
+    border: 4px red solid;
+    box-sizing: border-box;
+}

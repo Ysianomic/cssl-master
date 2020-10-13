@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeyFrame14.html</title>
+    <style>
+        /* 키프레임 규칙을 이용한 애니메이션 */
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #rect{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* 애니메이션을 적용하기 위한 css속성 */
+            animation-duration: 3s;
+            /* 키프레임 애니메이션 이름 지정 */
+            animation-name: myAni1;
+        }
+        @keyframes myAni1{
+            /* #rect에 키프레임 규칙 적용 - 그래야 애니메이션이 일어남 */
+            from{
+
+             /* 
+                width : 100px;
+                height:100px
+                ....... */   
+            }
+            to{
+                width: 400px;
+                height: 400px;
+            }
+        }
+        #circ1{
+            width : 100px;
+            height: 100px;
+            background-color: green;
+            text-align: center;
+            line-height: 100px;
+            position: absolute;
+            left: 0; top: 100px;
+            /* 애니메이션을 적용하기 위한 css속성 */
+            animation-duration: 3s;
+            /* 키프레임 애니메이션 이름 지정 */
+            animation-name: myAni2;
+        }
+        @keyframes myAni2{
+            from{}
+            to{
+                width: 400px;
+                height: 200px;
+                line-height: 200px;
+                transform: rotate(360deg);
+                border-radius: 100px;
+            }
+        }
+
+        #circ2{
+            width : 100px;
+            height: 100px;
+            background-color: sienna;
+            position: absolute;
+            left: 0; top: 200px;
+            /* 애니메이션을 적용하기 위한 css속성 */
+            animation-duration: 3s;
+            /* 키프레임 애니메이션 이름 지정 */
+            animation-name: myAni3;
+            animation-iteration-count: infinite;
+        }
+        @keyframes myAni3{
+            to{
+                left: 400px; top: 600px;
+            }
+        }
+        #circ2:hover{
+            animation-play-state: paused;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="rect"></div>
+        <div id="circ1">서클</div>
+        <div id="circ2"></div>
+
+    </div>
+</body>
+</html>

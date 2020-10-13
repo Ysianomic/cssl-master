@@ -16,7 +16,56 @@
         console.log(escape(escapeString));
         //unescape():UTF-8형식으로 인코딩된 값을 디코딩
         console.log(unescape('%uC548%uB155%20%uAC00%21%20heLLO%201234567890'));
+        document.write('<script>alert("메시지 대화상자");<\/script>');
+        /* eval('문자열'):매개변수에 있는 값을 자바스크립트로 해석
+            json형식의 데이터(name:'홍길동',age:10)처리하거나 문자열을 특정 DOM객체로 처리시, 문자열을 자스코드로 실행한다. */
+        //단, 문자열 전체를 ''로 감싸고 키값은 ""으로 물론 값도 ""(숫자나 boolean은 예외)
+        eval(alert("eval 대화상자"));
+        var str = {"name":'이길동' , "age":20};
+        console.log('%O',str);
+        //console.log(str.name);
+        //JSON.parse('JSON형식의 문자열'): 문자열을 json객체로 변환해서 반환
+        console.log('[Json.parse()함수]');
+        //var json = JSON.parse(str);
+        //console.log(json.name);
 
+
+        /* var obj={'name':'이길동',age:20};
+        var rtObj = eval('(function(){return this.obj;})');
+        console.log('eval함수');
+        console.log('%O',rtObj);
+        console.log(rtObj.name);
+        var obj2=eval("({'name':'이길동','age':20})"); */
+        /* eval들어오는 모든 자바스크립트문을 다 실행하기때문에 보안 이슈가 생길수있으므로 쓰지말것!!! 그냥 parse를 쓸것 */
+
+        /* isNan():IS NOT A NUMBER
+            숫자인지 아닌지 판단하는 함수 숫자라면 false 숫자가 아니면 true반환 */
+        console.log('[isNan()함수]');
+        isNaN('a100')?console.log('숫자가아니다'):console.log('숫자다');
+        isNaN('100a')?console.log('숫자가아니다'):console.log('숫자다');
+        isNaN('가100')?console.log('숫자가아니다'):console.log('숫자다');
+        isNaN('4100')?console.log('숫자가아니다'):console.log('숫자다');
+
+
+        /* parseInt(): 숫자부분만 반환해주는 함수
+        단, 숫자가 아닌 분자로 시작하면 NaN반환 */
+        console.log('[parseInt()]함수');
+        console.log(parseInt('1004'));
+        console.log(parseInt('10A'));
+        console.log(parseInt('10A22'));
+
+
+        /* encodeURI()/decodeURI() 
+        최소한의 문자만 인코딩
+        
+        endcodeURIComponent() / decodeURIComponent()    -추천
+        알파벳과 숫자외의, 대부분의 문자를 모두 인코딩
+        */
+        
+        var query = 'name=가길동&key=you&age=30'
+        console.log('encodeURI : ',encodeURI(query));
+        console.log('escape : ',escape(query));
+        console.log('encodeURIComponent : ',encodeURIComponent(query));
     </script>
 </head>
 <body>
