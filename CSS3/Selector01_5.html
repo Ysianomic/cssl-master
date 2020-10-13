@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector01_5.html</title>
+    <style>
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        /* 링크 선택자:링크가 걸린 컨텐츠의 상태에 따른 css속성 설정 */
+        a:hover{
+            color: green;
+            text-decoration: underline;
+        }
+        a:active{
+            color: red;
+        }
+        a:visited{
+            color: aqua;
+        }
+
+        /* after선택자: 선택된 태그가 감싸고 있는 컨텐츠의 뒤에 다른 내용을 추가하고자 할때 */
+        ul.link a::after{
+            content:'-' attr(href)
+        }
+        /* 부정 선택자 : not(제외할 선택자) 함수사용 */
+        ul.not li:not(.odd){
+            background-color: yellow;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>링크 선택자</h1>
+    <div>
+        <ul class="link">
+            <li><a href="http://www.nate.com">네이트</a></li>
+            <li><a href="http://www.naver.com">네이버</a></li>
+            <li><a href="http://www.daum.net">다음</a></li>
+            <li><a href="http://www.google.com">구글</a></li>
+            <li><a href="SELECTOR01_1.html">페이지</a></li>
+            <li><a href="http://www.baewoomart.co.kr">배움센터</a></li>
+        </ul>
+    </div>
+    <h1>부정 선택자</h1>
+    <div>
+        <ul class="not">
+            <li class="odd"><a href="http://www.naver.com">네이버</a></li>
+            <li><a href="http://www.nate.com">네이트</a></li>
+            <li class="odd"><a href="http://www.daum.net">다음</a></li>
+            <li><a href="http://www.google.co.kr">구글</a></li>
+        </ul>
+    </div>
+</body>
+
+</html>

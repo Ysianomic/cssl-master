@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector01_2.html</title>
+    <style>
+        h1{
+            color: green;
+        }
+        
+        /* 입력글자 스타일 변경 */
+        input{
+            color: green;
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+        
+        /*속성 선택자 : 선택자[속성]*/
+        h1[title]{
+            border: 1px indianred solid;
+        }
+
+        /* 속성값은 "이나'으로 감싸거나 특수문자가
+            포함되지 않은 경우는 감싸지 않아도 된다.*/
+        input[type=text]{
+            color: #ff0000;
+        }
+        input[type='password']{
+            background-color: yellow;
+        }
+        /* 속성에 정규표현식 적용 *는 포함됨의 의미 */
+        a[href*='na']{
+            color: #274423;
+            font-size: 1.4em;
+        }
+        a[href$='com']{     /*$는 끝나는 의미*/
+            background-color: yellow;
+        }
+        a[href^=http]{  /*^는 시작의 의미*/
+            border: 5px blue dotted;
+        }
+        /* h3와 같은수준의 div태그들(~) : 동위선택자*/
+        h3~div{ /* h3 동생들인 div */
+            color: aquamarine;
+        }
+        /* h3와 같은 수준의 div태그중 h3바로 아래에 있는 div태그 */
+        /* 바로 밑에 동생 */
+        h3+div{
+            color: red;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <h1>title속성이 없는 h1태그</h1>
+    <h1 title="제목 태그입니다">title속성이 있는 h1태그</h1>
+    <form>
+        이름:<input type="text" /><br />
+        아이디:<input type="text" /><br />
+        비밀번호:<input type="password" /><br />
+        전화번호:<input type="tel" />
+    </form>
+    
+    <h2>정규 표현식 사용</h2>
+    <a href="http://www.naver.com">네이버</a><br />
+    <a href="http://www.daum.net">다음</a><br />
+    <a href="www.nate.com">네이트</a>
+    <div>div0</div>
+    <h3 id="title">동위(+,~) 선택자</h3>
+    <div>div1</div>
+    <div>div2</div>
+    <fieldset>
+        <div>div3</div>
+    </fieldset>
+    <div>div4</div>
+    <div>div5</div>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window14_1.html</title>
+    <script>
+        var fn={
+            //메세지 대화상자:window.alert('뿌려줄 메세지')
+            login:function(){
+                var userText=document.getElementById('user');
+                if(userText.value==''){
+                    alert('아이디를 입력하세요.');
+                    userText.focus();
+                }
+            },
+            //확인대화상자:boolean window.confirm('확인메세지');
+            drop:function(){
+                var flag = window.confirm('정말로 삭제하시겠습니까?');
+                if(flag){
+                    //퇴실처리 로직...
+                    console.log('퇴실 하셨습니다.')
+                }
+            },
+            //입력대화상자:String window.prompt("메세지",'기본값') 요즘은 잘 안씀
+            insertName:function(){
+                var name = prompt('이름을 입력하세요.','');
+                alert('당신의 이름은 \r\n'+name+'입니다.');
+            },
+            insertAge:function(age){
+                var inputAge = prompt('나이를 입력하세요',age);
+                alert('당신의 나이는 \r\n'+(parseInt(inputAge))+'입니다.');
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <fieldset>
+        <legend>대화 상자들</legend>
+        아이디 <input type="text" id="user" />
+        <input type="button" value="로그인" onclick="fn.login()" />
+        <input type="button" value="삭제" onclick="fn.drop()" />
+        <input type="button" value="입력" onclick="fn.insertName()" />
+        <input type="button" value="나이입력" onclick="fn.insertAge(20)" />
+    </fieldset>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector01_4.html</title>
+    <style>
+        ul>li{
+            color: green;
+            font-size: 2em;
+            font-weight: bold;
+            border: 1px red solid;
+        }
+
+        /* 반응 선택자 - 마우스 반응에 따라 태그 선택 */
+        li:hover{   /*마우스가 올라간 li태그*/
+            color: red;
+        }
+        li:active{  /*마우스로 해당 태그영역을 클릭했을때*/
+            color: yellow;
+            background-color: black;
+        }
+
+        /* 상태 선택자 */
+        input:focus{
+            background-color: yellow;
+            border: 2px dotted red;
+        }
+        input:enabled{
+            color: red;
+            font-weight: bold;
+        }
+        input:disabled{
+            color: black;
+            background-color: aqua;
+            border: 5px dashed hotpink;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>반응 선택자</h1>
+    <div>
+        <ul>
+            <li>menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+            <li>menu4</li>
+            <li>menu5</li>
+            <li>menu6</li>
+        </ul>
+    </div>
+    <h1>상태 선택자</h1>
+    <div>
+        <form>
+            이름 : <input type="text" name="name" value="기본 텍스트" /><br />
+            아이디 : <input type="text" name="id" /><br />
+            비번 : <input type="password" name="pwd" value="1234" disabled />
+        </form>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font03.html</title>
+    <style>
+
+
+    </style>
+</head>
+
+<body>
+    <h2>폰트관련 CSS속성들</h2>
+
+    <div>
+        <h3>텍스트 크기 및 글꼴</h3>
+        글자 크기(기본 텍스트)<br />
+        <span style="font-size: 12pt;">글자 크기 12pt</span><br />
+        <span style="font-size: 1em;">글자 크기 1em</span><br />
+        <span style="font-size: 24pt;">글자 크기 24pt</span><br />
+        <span style="font-size: 2em;">글자 크기 2em</span><br />
+        <span style="font-size: 0.8em;">글자 크기 0.8em</span><br />
+        <span style="font-size: .8em;">글자 크기 .8em</span><br />
+        <span style="font-size: 1.8em; font-family: 돋움체;">글자 크기 1.8em,글꼴 돋움체</span><br />
+        
+        <h3>텍스트 두께 및 스타일</h3>
+        <span style="font-weight: bold; font-style: italic;">텍스트 두껍게,스타일은 기울이기 </span>
+        <address style="font-style: normal;">서울시 종로구 탑골</address>
+        
+        <h3>글자 사이의 간격</h3>
+        <span style="border: 1px green solid;letter-spacing: .5em;">한국소프트웨어 인재개발원입니다.</span>
+        
+        <h3>줄 사이의 간격</h3>
+        <!--블락 엘리먼트는 컨텐츠 영역의 세로폭이 컨텐츠 크기였다가
+            5em만큼 세로폭이 늘어나서 마치 줄간격이
+            생긴 효과가 난다.
+        -->
+        <h4 style="background-color: yellow; line-height: 5em;">블락엘리먼트에 줄간격 적용</h4>
+        <h4 style="background-color: red;">블락엘리먼트에 줄간격 적용</h4>
+        <h4 style="background-color: blue;"> 블락엘리먼트에 줄간격 적용</h4>
+        <div class="inline">
+            <h4>인라인 엘리먼트에 적용하기</h4>
+            <!--인라인 엘리먼트는 컨텐츠 영역의 크기가 변하지 않고
+            5em만큼 줄간격이 생긴다-->
+            <span style="background-color: yellow; line-height: 5em;">인라인 엘리먼트</span>
+            <span>인라인 엘리먼트</span>
+            <span>인라인 엘리먼트</span>
+        </div>
+        <h3>수직으로 가운데 정렬시</h3>
+        <!-- height속성 과 line-height속성의 값을 동일하게 지정-->
+        <div style="background-color: yellow; height: 200px; line-height: 200px;">
+            텍스트
+        </div>
+        <h3>영역의 정 가운데 정렬시</h3>
+        <div style="background-color: wheat; height: 200px; line-height: 200px; text-align: center;">
+            텍스트
+        </div>
+    </div>
+</body>
+
+</html>

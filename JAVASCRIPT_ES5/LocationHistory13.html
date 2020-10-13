@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocationHistory13.html</title>
+    <script>
+        console.log(typeof window.location);
+        console.log('%O',location);
+        console.log(location.href);
+        console.log(location.protocol);
+
+        function fnLogin(){
+            var user = document.getElementById('user').value;
+            var pass = document.getElementById('pass').value
+        /*
+            회원이면 마이페이지로자동이동 아니면 회원가입 페이지로 자동이동
+        */
+            
+            if(user=='KIM' && pass=='1234'){
+                //회원인경우 마이페이지로 자동이동
+                //location.href='IF04.html';
+                location.replace('IF04.html');
+            }
+            else{
+                //비회원인경우 회원가입페이지로 이동
+                //location.href='ForWhile06.html'
+                location.replace('ForWhile06.html');
+            }
+
+        }
+    </script>
+</head>
+
+<body>
+    <h2>location & history & navigator객체</h2>
+    <fieldset>
+        <legend>로그인 화면</legend>
+        아이디 <input type="text" id="user" />
+        비밀번호 <input type="password" id="pass" />
+        <input type="button" value="로그인" onclick="fnLogin();" />
+        <input type="button" value="새로고침" onclick="location.reload()" />
+        <input type="button" value="history테스트" onclick="location.href = 'Operator02.html';" />
+        <input type="button" value="다음 페이지" onclick="history.go(1)" />
+        <input type="button" value="이전 페이지" onclick="history.back()" />
+        <input type="button" value="웹브라우저 종류" onclick="alert(navigator.userAgent)" />
+    </fieldset>
+</body>
+
+</html>

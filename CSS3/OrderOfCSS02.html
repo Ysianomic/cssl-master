@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrderOfCSS02.html</title>
+    <!-- embedding style(style태그로 css설정) -->
+    <style>
+        /* !important > inline > id선택자 > class선택자 > 태그선택자 > * 
+            우선순위가 같다면 태그랑 가까운 css가적용된다.(인터프리터방식이라서 위에서 아래로 순차적으로)
+        */
+        h1{
+            color: blue;
+        }
+        h1{
+            color: red;
+        }
+        #sea{
+            color: blue;
+        }
+        .sea{
+            color: red;
+        }
+        .mountain{
+            color: green;
+        }
+        li{
+            color: yellow !important;
+        }
+        /* Inline Style > Embeding Style과 External Style은 적용시키고자 하는 
+        태그와 가까운 style이 적용된다. */
+        dd{
+            color: cyan;
+        }
+    </style>
+    <!-- 외부 css파일을 적용시키기위해서 link태그사용(external style) -->
+    <link href="../Styles/styles.css" rel="stylesheet"/>
+</head>
+
+<body>
+    <h1>선택자 종류에 따른 CSS적용순서</h1>
+    <ul>
+        <li class="mountain">관악산</li>
+        <li class="mountain">치악산</li>
+        <!-- inline style(태그안에 style 속성으로 CSS설정)-->
+        <li class="sea" id="sea" style="color: hotpink;">경포대</li>
+        <li class="sea">해운대</li>
+    </ul>
+    <h1>CSS적용 스타일(inline style,embedding style,external style)에 따른 적용 순서</h1>
+    <dl>
+        <dd>종로구</dd>
+        <dd>강서구</dd>
+        <!-- inline style(태그안에 style 속성으로 CSS설정)-->
+        <dd style="color: darkmagenta;">강동구</dd>
+        <dd>강남구</dd>
+    </dl>
+</body>
+
+</html>
