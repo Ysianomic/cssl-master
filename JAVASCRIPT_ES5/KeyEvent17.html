@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeyEvent17.html</title>
+    <script>
+        function fnKeyHandler(flag){
+            switch(flag){
+                case 1: 
+                    console.log('keydown이벤트 발생'); break;
+                case 2: 
+                    console.log('keyup이벤트 발생'); break;
+                default: 
+                    console.log('keypress이벤트 발생');
+            }
+
+        }
+        function fnSetFocus(obj){
+            if(obj.value.length == 6){
+                document.getElementById('ssn').focus();
+            }
+            else if(obj.value.length > 6){
+                alert('6자리 까지만 작성할수있습니다.');
+                obj.value='';
+                obj.focus();
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <fieldset>
+        <legend>key이벤트 테스트</legend>
+        keydown: <input type="text" onkeydown="fnKeyHandler(1)" />
+        keyup: <input type="text" onkeyup="fnKeyHandler(2)" />
+        keypress: <input type="text" onkeypress="fnKeyHandler(3)" />
+    </fieldset>
+
+    ​
+
+    <fieldset>
+        <legend>주민번호</legend>
+        <input type="text" size="6" maxlength="6" onkeyup="fnSetFocus(this)" />
+        -
+        <input type="text" size="7" maxlength="7" id="ssn" />
+    </fieldset>
+</body>
+
+</html>

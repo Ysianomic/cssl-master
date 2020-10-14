@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FocusBlur18.html</title>
+    <script>
+        var txt,pwd;
+        window.addEventListener('load',function(){
+            txt = document.getElementById('txt');
+            pwd = document.getElementById('pwd');
+        });
+
+        function fnUser(flag,obj){
+            if(flag == 1){
+                if(obj.value == '아이디'){
+                    obj.value='';
+                    obj.style.color='black';
+                    
+                }
+                else{
+                    if(obj.value=''){
+                        obj.value='아이디';
+                        obj.style.color='lightgray';
+                    }
+                }
+            }
+        }
+
+        function fnPass(flag){
+            if(flag==1){    //type
+                txt.style.display = 'none';
+                pwd.style.display='';   //보이기
+                pwd.focus();
+            }
+            else{
+                if(pwd.value.length==0){
+                    pwd.style.display='none'
+                    txt.style.display='';
+                }
+            }
+        }
+
+
+
+
+
+       /*  function fnUser(number,obj){
+            var id = document.getElementsByTagName('input')[3];
+            switch(number){
+                case 1:
+                    if(id.value=='아이디'){
+                        id.value='';
+                        break;
+                    }
+                    else if(id.value !=''){
+                        id.style.fontStyle='normal'
+                        id.style.color='black';
+                        break;
+                    }
+                case 2:
+                    if(id.value != ''){
+                        break;
+                    }
+                    else{
+                        id.value='아이디';
+                        id.style.color='lightgrey';
+                        break;
+                    }
+            }
+        }
+
+        function fnPass(num){
+            var pw = document.getElementById('txt');
+            pw.value='비밀번호';
+            pw.style.color='lightgrey';
+            switch(num){
+                case 1:
+                    pw.style.fontStyle='normal'
+                    pw.style.color='black';
+                    if(pw.value=='비밀번호'){
+                        pw.value='';
+                        break;
+                    }
+                    else if(pw.value !=''){
+                        pw.type='password';
+                        break;
+                    }
+                case 2:
+                    if(pw.value != ''){
+                        pw.type='password';
+                        break;
+                    }
+                    else{
+                        pw.value='비밀번호';
+                        pw.style.color='lightgrey';
+                        break;
+                    }
+            }
+        }
+
+ */
+    </script>
+</head>
+
+<body>
+    <fieldset>
+        <legend>focus 및 blur이벤트</legend>
+        <input type="text" onfocus="console.log('focus이벤트 발생-포커스를 얻을때');"
+            onblur="console.log('blur이벤트 발생-포커스를 잃을때');" />
+    </fieldset>
+
+    ​
+
+    ​
+
+    <fieldset>
+        <legend>focus 및 blur이벤트 예제(HTML5의 속성 이용-IE에서만 적용됨)</legend>
+        아이디 <input type="text" placeholder="아이디" />
+        비밀번호 <input type="password" placeholder="비밀번호" />
+    </fieldset>
+
+    <fieldset>
+        <legend>focus 및 blur이벤트 예제(자바스크립트로 구현)</legend>
+
+        아이디 <input type="text" style="color:lightgray; " onfocus="fnUser(1,this)" onblur="fnUser(2,this)" />
+
+        비밀번호 <input type="text"  id="txt" style="color:lightgray" onfocus="fnPass(1)" />
+        <input  onblur="fnPass(2)" type="password" id="pwd" style="display:none" />
+           
+
+    </fieldset>
+</body>
+
+</html>

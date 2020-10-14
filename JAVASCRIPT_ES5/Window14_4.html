@@ -21,21 +21,21 @@
             json형식의 데이터(name:'홍길동',age:10)처리하거나 문자열을 특정 DOM객체로 처리시, 문자열을 자스코드로 실행한다. */
         //단, 문자열 전체를 ''로 감싸고 키값은 ""으로 물론 값도 ""(숫자나 boolean은 예외)
         eval(alert("eval 대화상자"));
-        var str = {"name":'이길동' , "age":20};
+        var str = '{"name":"이길동","age":20}';
         console.log('%O',str);
-        //console.log(str.name);
+        console.log(str.name);
         //JSON.parse('JSON형식의 문자열'): 문자열을 json객체로 변환해서 반환
         console.log('[Json.parse()함수]');
-        //var json = JSON.parse(str);
-        //console.log(json.name);
+        var json = JSON.parse(str);
+        console.log(json.name);
 
 
-        /* var obj={'name':'이길동',age:20};
+         var obj={'name':'이길동',age:20};
         var rtObj = eval('(function(){return this.obj;})');
         console.log('eval함수');
         console.log('%O',rtObj);
         console.log(rtObj.name);
-        var obj2=eval("({'name':'이길동','age':20})"); */
+        var obj2=eval("({'name':'이길동','age':20})");  
         /* eval들어오는 모든 자바스크립트문을 다 실행하기때문에 보안 이슈가 생길수있으므로 쓰지말것!!! 그냥 parse를 쓸것 */
 
         /* isNan():IS NOT A NUMBER
