@@ -39,15 +39,18 @@
     ※자바스크립트 코드로 submit시 submit이벤트는 발생하지 않는다
         
     */
-        
+       
         function isValidate(obj){
-            var err = document.getElementById('errId');
             if(obj.id.value==''){
+                var err = document.getElementById('errId');
                 console.log('%O',obj.Gender);
                 err.innerHTML='아이디를 입력하세요.';
                 //alert()를 span태그사이에 텍스트로 메시지를 보여주세요.
                 //alert('아이디를 입력하세요');
                 obj.id.focus();
+                obj.id.onkeydown = function(){
+                    err.style.display='none';
+                }
                 return false;
             }
             if(frmObj.pwd.length==0){
@@ -139,9 +142,4 @@
             */
             if(isValidate(obj)) obj.submit();   //자스코드로 전송하는 함수
         }
-
-      function test(obj){
-          obj = document.form[0];
-          err.style.display='none';
-      }
 
